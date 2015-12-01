@@ -32,6 +32,7 @@ public class Autor {
 	public Autor(String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao; 
+		this.producaoArtistica = null;
 	}
 	
 	public String getNome() {

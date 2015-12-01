@@ -2,6 +2,7 @@ package br.unb.cic.imdb.negocio;
 
 import java.util.List;
 
+import br.unb.cic.imdb.integracao.DAOAutor;
 import br.unb.cic.imdb.integracao.DAOGenero;
 
 /**
@@ -14,6 +15,7 @@ import br.unb.cic.imdb.integracao.DAOGenero;
 public class IMDBFacade {
 	
 	private DAOGenero daoGenero;
+	private DAOAutor daoAutor;
 
 	public IMDBFacade() {}
 	
@@ -26,7 +28,7 @@ public class IMDBFacade {
 //	}
 	
 	public void adicionaGenero(Genero genero) {
-		if(recuperarPorTitulo(genero.getTitulo()) == null) {
+		if(recuperarGeneroPorTitulo(genero.getTitulo()) == null) {
 			daoGenero.salvar(genero);
 		}
 		else { 
@@ -38,11 +40,33 @@ public class IMDBFacade {
 		return daoGenero.recuperaTodos();
 	}
 
-	public Genero recuperarPorTitulo(String titulo) {
+	public Genero recuperarGeneroPorTitulo(String titulo) {
 		return daoGenero.recuperaPorTitulo(titulo);
 	}
 	
 	public void setDaoGenero(DAOGenero daoGenero) {
 		this.daoGenero = daoGenero;
 	}
+	
+	public void adicionaAutor(Autor autor) {
+		if(recuperarAutorPorNome(autor.getNome()) == null) {
+			daoAutor.salvar(autor);
+		}
+		else {
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public List<Autor> recuperarAutores() {
+		return daoAutor.recuperaTodos();
+	}
+	
+	public Autor recuperarAutorPorNome(String nome) {
+		return daoAutor.recuperaPorNome(nome);
+	}
+	
+	public void setDaoAutor(DAOAutor daoAutor) {
+		this.daoAutor = daoAutor;
+	}
+	
 }
