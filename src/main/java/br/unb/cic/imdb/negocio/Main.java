@@ -1,9 +1,11 @@
 package br.unb.cic.imdb.negocio;
 
+import br.unb.cic.imdb.InterfaceGrafica.*;
+
 public class Main {
 	
 	public static void main(String args[]) {
-		View GUI = new View();
+		LoginFrame s = new LoginFrame(); 
 	}
 
 }
