@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Usuario {
+	//AVISO: FALTA COLOCAR AS ANNOTATIONS!!!	
 	
 	private Long id;
 	
