@@ -35,8 +35,8 @@ o que foi implementado e como o sistema deve eser executado.
 
 c) Data da entrega: 30/11/2015
 
-.Criar classe Usuario, contendo como atributos, além dos mencionados na foto, lista de Avaliacoes;
-.Adicionar na classe TrabalhoArtistico, a lista de Avaliacoes;
+.Criar classe Usuario, contendo como atributos, além dos mencionados na foto, lista de Avaliacoes; (ok)
+.Adicionar na classe TrabalhoArtistico, a lista de Avaliacoes; (ok)
 .Criar classes AlbumMusical e Filme, que herdam de TrabalhoArtistico;
 .Criar classe FaixaMusical, que será usada na classe AlbumMusical;
 .Criar classe Avaliacao que será usada tanto em Usuario quanto em TrabalhoArtistico, contendo como atributos, além dos mencionados na foto, Usuario e TrabalhoArtistico.

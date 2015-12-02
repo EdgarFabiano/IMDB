@@ -27,6 +27,8 @@ public class TrabalhoArtistico {
 	
 	@ManyToOne
 	private Autor autor;
+	
+	//private List<Avaliacao> avaliacoesRecebidas;
 
 	public String getTitulo() {
 		return titulo;
@@ -60,4 +62,15 @@ public class TrabalhoArtistico {
 		this.autor = autor;
 	}
 
+	//public void adicionaAvaliacaoRecebida(Avaliacao avaliacao) {
+	//	avaliacoesRecebidas.add(avaliacao);
+	//}
+	
+	//public List<Avaliacao> getAvaliacoesRecebidas() {
+	//	return avaliacoesRecebidas;
+	//}
+
+	//public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
+	//	this.avaliacoesRecebidas = avaliacoesRecebidass;
+	//}
 }
