@@ -6,18 +6,26 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
 
+
+
 import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
+import br.unb.cic.imdb.negocio.Main;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 
-public class LoginPanel extends JPanel implements ActionListener{
+/** Painel de Login do usuário
+ * @author Edgar Fabiano
+ *
+ */
+public class LoginPanel extends panels implements ActionListener{
 	
 	/**
 	 * 
@@ -26,6 +34,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private JButton enterButton;
 	private JTextField userField;
 	private JTextField senhaField;
+	JLabel logo;
 	
 	private String user;
 	public String getUser() {
@@ -37,6 +46,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 
 	private String password;
 	private JLabel lbl;
+	private JButton cadastroButton;
 	public String getPassword() {
 		return password;
 	}
@@ -45,15 +55,9 @@ public class LoginPanel extends JPanel implements ActionListener{
 	}
 
 	/**Construtor da classe LoginPanel
-	 * Gera o painel que será inserido no LoginFrame
+	 * Gera o painel que será inserido na MainFrame
 	 */
 	public LoginPanel() {
-		
-		enterButton = new JButton("Entrar");
-		enterButton.setFont(new Font("Arial", Font.PLAIN, 18));
-		enterButton.setBackground(Color.yellow);
-		enterButton.addActionListener(this);
-		enterButton.setBounds(394, 343, 111, 40);
 		
 		setup();
 		
@@ -62,8 +66,7 @@ public class LoginPanel extends JPanel implements ActionListener{
 	private void setup(){
 		setLayout(null);
 		this.setSize(900,600);
-		this.add(enterButton);
-		
+				
 		setBackground(Color.DARK_GRAY);
 		
 		userField = new JTextField();
@@ -91,11 +94,19 @@ public class LoginPanel extends JPanel implements ActionListener{
 		lblSenha.setBounds(247, 285, 56, 16);
 		add(lblSenha);
 		
-		JLabel logo = new JLabel();
+		enterButton = new JButton("Entrar");
+		enterButton.setFont(new Font("Arial", Font.PLAIN, 18));
+		enterButton.setBackground(Color.yellow);
+		enterButton.addActionListener(this);
+		enterButton.setBounds(394, 343, 111, 40);
+		this.add(enterButton);
+		
+		
+		logo = new JLabel();
 		logo.setToolTipText("IMDB");
-		//Image img = new ImageIcon(this.getClass().getResource("logo.png")).getImage();
-		//logo.setIcon(new ImageIcon(img));
-		logo.setBounds(342, 49, 200, 103);
+//		Image img = new ImageIcon(getClass().getResource("logo.png")).getImage();
+//		logo.setIcon(new ImageIcon(img));
+		logo.setBounds(350, 49, 200, 103);
 		add(logo);
 		
 		lbl = new JLabel("Login");
@@ -103,6 +114,13 @@ public class LoginPanel extends JPanel implements ActionListener{
 		lbl.setBounds(414, 170, 71, 30);
 		lbl.setForeground(Color.WHITE);
 		add(lbl);
+		
+		cadastroButton = new JButton("Cadastrar!");
+		cadastroButton.addActionListener(this);
+		cadastroButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		cadastroButton.setBounds(384, 444, 132, 25);
+		this.add(cadastroButton);
+		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -111,7 +129,10 @@ public class LoginPanel extends JPanel implements ActionListener{
 			setUser(userField.getText());
 			lbl.setText("Foi!");
 			System.out.println(getUser()+" "+getPassword());
-			System.exit(0);
+		}
+		if(e.getSource() == cadastroButton){
+			this.setVisible(false);
+			Main.Frame.setPanel(new CadastroPanel());
 		}
 		
 	}

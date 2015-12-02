@@ -3,23 +3,34 @@ package br.unb.cic.imdb.InterfaceGrafica;
 import javax.swing.JFrame;
 import java.awt.Toolkit;
 
-public class LoginFrame extends JFrame {
+
+/**Janela principal do programa, onde os novos painéis que herdam panels
+ * podem ser facilmente instanciados e colocados aqui nas trocas de telas
+ * 
+ * @author EdgarFabiano
+ *
+ */
+public class MainFrame extends JFrame {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private LoginPanel currentPanel;
+	private panels currentPanel;
 	
-	public LoginFrame() {		
-		currentPanel = new LoginPanel();
-		
+	public MainFrame(panels p) {		
+		setPanel(p);
 		setupFrame();
+	}
+	
+	public void setPanel(panels p){
+		currentPanel = p;
+		this.setContentPane(currentPanel);
+		currentPanel.setVisible(true);
 	}
 
 	private void setupFrame() {
 		
-		this.setContentPane(currentPanel);
 		this.setSize(900, 600);
 		this.setVisible(true);
 		
