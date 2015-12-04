@@ -11,7 +11,9 @@ import br.unb.cic.imdb.negocio.Genero;
  * @author rbonifacio
  */
 public interface DAOGenero {
+	
 	public void salvar(Genero genero);
 	public List<Genero> recuperaTodos();
 	public Genero recuperaPorTitulo(String titulo);
+
 }
