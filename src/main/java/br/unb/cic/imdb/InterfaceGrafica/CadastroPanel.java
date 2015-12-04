@@ -1,24 +1,14 @@
 package br.unb.cic.imdb.InterfaceGrafica;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-
-
-
-
-import java.awt.Color;
-import java.awt.Image;
-
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-import org.dom4j.tree.BackedList;
+import java.awt.Color;
 
 import br.unb.cic.imdb.negocio.Main;
 
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -69,23 +59,23 @@ public class CadastroPanel extends panels {
 	 * Gera o painel que será inserido na MainFrame
 	 */
 	public CadastroPanel() {
+				
+		setup();
+		
+	}
+	
+	private void setup(){		
+		setLayout(null);
+		this.setSize(900,600);
+		setBackground(Color.DARK_GRAY);
 		
 		CadastroButton = new JButton("Cadastrar");
 		CadastroButton.setFont(new Font("Arial", Font.PLAIN, 18));
 		CadastroButton.setBackground(Color.WHITE);
 		CadastroButton.addActionListener(this);
 		CadastroButton.setBounds(387, 394, 125, 40);
-		
-		setup();
-		
-	}
-	
-	private void setup(){
-		setLayout(null);
-		this.setSize(900,600);
 		this.add(CadastroButton);
 		
-		setBackground(Color.DARK_GRAY);
 		
 		newUserField = new JTextField();
 		newUserField.setToolTipText("Informar novo Login");

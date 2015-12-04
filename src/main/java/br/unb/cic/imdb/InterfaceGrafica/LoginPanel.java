@@ -1,15 +1,9 @@
 package br.unb.cic.imdb.InterfaceGrafica;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
-
-
-
 import java.awt.Color;
-import java.awt.Image;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -19,6 +13,7 @@ import br.unb.cic.imdb.negocio.Main;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
 /** Painel de Login do usuário
@@ -65,8 +60,7 @@ public class LoginPanel extends panels implements ActionListener{
 	
 	private void setup(){
 		setLayout(null);
-		this.setSize(900,600);
-				
+		this.setSize(900,600);	
 		setBackground(Color.DARK_GRAY);
 		
 		userField = new JTextField();
@@ -110,8 +104,9 @@ public class LoginPanel extends panels implements ActionListener{
 		add(logo);
 		
 		lbl = new JLabel("Login");
+		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lbl.setBounds(414, 170, 71, 30);
+		lbl.setBounds(288, 170, 324, 30);
 		lbl.setForeground(Color.WHITE);
 		add(lbl);
 		
@@ -120,6 +115,8 @@ public class LoginPanel extends panels implements ActionListener{
 		cadastroButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		cadastroButton.setBounds(384, 444, 132, 25);
 		this.add(cadastroButton);
+		//cadastroButton.setVisible(false);
+		
 		
 	}
 	@Override
@@ -127,8 +124,12 @@ public class LoginPanel extends panels implements ActionListener{
 		if(e.getSource() == enterButton){
 			setPassword(senhaField.getText());
 			setUser(userField.getText());
-			lbl.setText("Foi!");
+			/*Colocar as condições caso o usuário não esteja no BD*/
+			
+			lbl.setText("Usuário não cadastrado");
 			System.out.println(getUser()+" "+getPassword());
+			Main.Frame.setPanel(new MainPanel());
+			//cadastroButton.setVisible(true);
 		}
 		if(e.getSource() == cadastroButton){
 			this.setVisible(false);

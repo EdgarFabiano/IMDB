@@ -11,7 +11,9 @@ import javax.swing.JPanel;
  */
 public abstract class panels extends JPanel implements ActionListener{
 	
-	private void setup(){
-		
-	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 }

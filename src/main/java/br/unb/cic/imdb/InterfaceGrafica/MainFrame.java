@@ -18,7 +18,8 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private panels currentPanel;
 	
-	public MainFrame(panels p) {		
+	public MainFrame(panels p) {
+				
 		setPanel(p);
 		setupFrame();
 	}
@@ -27,15 +28,14 @@ public class MainFrame extends JFrame {
 		currentPanel = p;
 		this.setContentPane(currentPanel);
 		currentPanel.setVisible(true);
+		this.setSize(currentPanel.getWidth(), currentPanel.getHeight());
+		this.setVisible(true);
 	}
 
 	private void setupFrame() {
-		
-		this.setSize(900, 600);
-		this.setVisible(true);
-		
+				
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/com/sun/java/swing/plaf/motif/icons/Inform.gif")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Usu\u00E1rios\\Edgar\\Documents\\GitHub\\IMDB\\assets\\IMDb_logo.svg.png"));
 		setTitle("IMDB");
 		
 	}
