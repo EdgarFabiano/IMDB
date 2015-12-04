@@ -42,14 +42,14 @@ public class Usuario {
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
-		//this.avaliacoesFeitas = null;
+		this.avaliacoesFeitas = null;
 	}
 	
 	public Usuario(String login, String senha, String nome, int anoNascimento, int mesNascimento, int diaNascimento){
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
-		//this.avaliacoesFeitas = null;
+		this.avaliacoesFeitas = null;
 		setNascimento(anoNascimento, mesNascimento, diaNascimento);
 	}
 	
@@ -90,15 +90,15 @@ public class Usuario {
 		this.nascimento.set(ano, mes, dia);
 	}
 	
-	//public void adicionaAvaliacaoFeita(Avaliacao avaliacao) {
-	//	avaliacoesFeitas.add(avaliacao);
-	//}
+	public void adicionaAvaliacaoFeita(Avaliacao avaliacao) {
+		avaliacoesFeitas.add(avaliacao);
+	}
 	
-	//public List<Avaliacao> getAvaliacoesFeitas() {
-	//	return avaliacoesFeitas;
-	//}
+	public List<Avaliacao> getAvaliacoesFeitas() {
+		return avaliacoesFeitas;
+	}
 
-	//public void setAvaliacoesFeitas(List<Avaliacao> avaliacoesFeitas) {
-	//	this.avaliacoesFeitas = avaliacoesFeitas;
-	//}
+	public void setAvaliacoesFeitas(List<Avaliacao> avaliacoesFeitas) {
+		this.avaliacoesFeitas = avaliacoesFeitas;
+	}
 }

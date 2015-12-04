@@ -66,15 +66,15 @@ public class TrabalhoArtistico {
 		this.autor = autor;
 	}
 
-	//public void adicionaAvaliacaoRecebida(Avaliacao avaliacao) {
-	//	avaliacoesRecebidas.add(avaliacao);
-	//}
+	public void adicionaAvaliacaoRecebida(Avaliacao avaliacao) {
+		avaliacoesRecebidas.add(avaliacao);
+	}
 	
-	//public List<Avaliacao> getAvaliacoesRecebidas() {
-	//	return avaliacoesRecebidas;
-	//}
+	public List<Avaliacao> getAvaliacoesRecebidas() {
+		return avaliacoesRecebidas;
+	}
 
-	//public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
-	//	this.avaliacoesRecebidas = avaliacoesRecebidass;
-	//}
+	public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
+		this.avaliacoesRecebidas = avaliacoesRecebidas;
+	}
 }
