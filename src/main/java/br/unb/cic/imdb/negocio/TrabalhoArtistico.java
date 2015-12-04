@@ -1,11 +1,14 @@
 package br.unb.cic.imdb.negocio;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,7 +31,8 @@ public class TrabalhoArtistico {
 	@ManyToOne
 	private Autor autor;
 	
-	//private List<Avaliacao> avaliacoesRecebidas;
+	@OneToMany(mappedBy="trabalhoArtistico")
+	private List<Avaliacao> avaliacoesRecebidas;
 
 	public String getTitulo() {
 		return titulo;

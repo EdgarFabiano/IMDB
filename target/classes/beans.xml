@@ -7,14 +7,17 @@
 
 
 	<!-- IMPLEMENTACOES EM JPA -->
+	<!-- 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.jpa.DAOGeneroJPA" />
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.jpa.DAOAutorJPA" />
-
+	-->
+	
 	<!-- IMPLEMENTACOES EM MEMORIA -->
-	<!-- 
+	 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.memoria.DAOGeneroMemoria"/>
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.memoria.DAOAutorMemoria"/>
-	-->
+	
+	
 	<bean id="facade" class="br.unb.cic.imdb.negocio.IMDBFacade"
 		scope="singleton">
 		<property name="daoGenero" ref="daoGenero" />

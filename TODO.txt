@@ -39,5 +39,5 @@ c) Data da entrega: 30/11/2015
 .Adicionar na classe TrabalhoArtistico, a lista de Avaliacoes; (ok)
 .Criar classes AlbumMusical e Filme, que herdam de TrabalhoArtistico;
 .Criar classe FaixaMusical, que será usada na classe AlbumMusical;
-.Criar classe Avaliacao que será usada tanto em Usuario quanto em TrabalhoArtistico, contendo como atributos, além dos mencionados na foto, Usuario e TrabalhoArtistico.
+.Criar classe Avaliacao que será usada tanto em Usuario quanto em TrabalhoArtistico, contendo como atributos, além dos mencionados na foto, Usuario e TrabalhoArtistico.(ok)
 .Criar classes Main e View, pra rodar o programa em geral, e gerenciar a UI, respectivamente;
