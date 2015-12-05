@@ -10,9 +10,9 @@
 	<!-- 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.jpa.DAOGeneroJPA" />
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.jpa.DAOAutorJPA" />
-	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.memoria.DAOAvaliacaoJPA"/>
-	<bean id="daoTrabalhoArtistico" class="br.unb.cic.imdb.integracao.memoria.DAOTrabalhoArtisticoJPA"/>
-	<bean id="daoUsuario" class="br.unb.cic.imdb.integracao.memoria.DAOUsuarioJPA"/>
+	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.jpa.DAOAvaliacaoJPA"/>
+	<bean id="daoTrabalhoArtistico" class="br.unb.cic.imdb.integracao.jpa.DAOTrabalhoArtisticoJPA"/>
+	<bean id="daoUsuario" class="br.unb.cic.imdb.integracao.jpa.DAOUsuarioJPA"/>
 	-->
 	
 	<!-- IMPLEMENTACOES EM MEMORIA -->
