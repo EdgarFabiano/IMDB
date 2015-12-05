@@ -10,18 +10,18 @@
 	<!-- 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.jpa.DAOGeneroJPA" />
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.jpa.DAOAutorJPA" />
-	<bean id="daoAvaliacao" class="br.unb.imdb.integracao.memoria.DAOAvaliacaoJPA"/>
-	<bean id="daoTrabalhoArtistico" class="br.unb.imdb.integracao.memoria.DAOTrabalhoArtisticoJPA"/>
-	<bean id="daoUsuario" class="br.unb.imdb.integracao.memoria.DAOUsuarioJPA"/>
+	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.memoria.DAOAvaliacaoJPA"/>
+	<bean id="daoTrabalhoArtistico" class="br.unb.cic.imdb.integracao.memoria.DAOTrabalhoArtisticoJPA"/>
+	<bean id="daoUsuario" class="br.unb.cic.imdb.integracao.memoria.DAOUsuarioJPA"/>
 	-->
 	
 	<!-- IMPLEMENTACOES EM MEMORIA -->
 	 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.memoria.DAOGeneroMemoria"/>
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.memoria.DAOAutorMemoria"/>
-	<bean id="daoAvaliacao" class="br.unb.imdb.integracao.memoria.DAOAvaliacaoMemoria"/>
-	<bean id="daoTrabalhoArtistico" class="br.unb.imdb.integracao.memoria.DAOTrabalhoArtisticoMemoria"/>
-	<bean id="daoUsuario" class="br.unb.imdb.integracao.memoria.DAOUsuarioMemoria"/>
+	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.memoria.DAOAvaliacaoMemoria"/>
+	<bean id="daoTrabalhoArtistico" class="br.unb.cic.imdb.integracao.memoria.DAOTrabalhoArtisticoMemoria"/>
+	<bean id="daoUsuario" class="br.unb.cic.imdb.integracao.memoria.DAOUsuarioMemoria"/>
 	
 	
 	<bean id="facade" class="br.unb.cic.imdb.negocio.IMDBFacade"

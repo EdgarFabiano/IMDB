@@ -53,6 +53,14 @@ public class Usuario {
 		setNascimento(anoNascimento, mesNascimento, diaNascimento);
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getLogin() {
 		return login;
 	}

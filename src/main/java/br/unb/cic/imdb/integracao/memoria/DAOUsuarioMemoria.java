@@ -1,5 +1,6 @@
 package br.unb.cic.imdb.integracao.memoria;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.unb.cic.imdb.integracao.DAOUsuario;
@@ -8,6 +9,11 @@ import br.unb.cic.imdb.negocio.Usuario;
 public class DAOUsuarioMemoria implements DAOUsuario {
 
 	public List<Usuario> usuarios;
+	
+	public DAOUsuarioMemoria() {
+		usuarios = new ArrayList<>();
+	}
+	
 	@Override
 	public void salvar(Usuario usuario) {
 		usuarios.add(usuario);

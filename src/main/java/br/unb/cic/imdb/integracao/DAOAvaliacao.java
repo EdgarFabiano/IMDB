@@ -3,14 +3,13 @@ package br.unb.cic.imdb.integracao;
 import java.util.List;
 
 import br.unb.cic.imdb.negocio.Avaliacao;
+import br.unb.cic.imdb.negocio.TrabalhoArtistico;
+import br.unb.cic.imdb.negocio.Usuario;
 
 public interface DAOAvaliacao {
 
 	public void salvar(Avaliacao avaliacao);
 	public List<Avaliacao> recuperaTodos();
-	//Vamos ter que recuperar avaliacao de alguma forma mais especifica?
-	//Toda vez que usuario e trabalho artistico forem recuperados já trarão
-	//consigo a lista de avaliacoes referentes a ele, o unico criterio a mais
-	//pensar eh buscar avaliacoes por nota mas n sei se faz mto sentido.
-	//O que vcs acham?
+	public List<Avaliacao> recuperaPorUsuario(Usuario usuario);
+	public List<Avaliacao> recuperaPorTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico);
 }

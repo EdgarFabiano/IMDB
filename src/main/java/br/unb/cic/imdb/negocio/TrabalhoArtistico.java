@@ -34,6 +34,24 @@ public class TrabalhoArtistico {
 	@OneToMany(mappedBy="trabalhoArtistico")
 	private List<Avaliacao> avaliacoesRecebidas;
 
+	public TrabalhoArtistico() { }
+	
+	public TrabalhoArtistico(String titulo, int ano, Genero genero, Autor autor) {
+		super();
+		this.titulo = titulo;
+		this.ano = ano;
+		this.genero = genero;
+		this.autor = autor;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
