@@ -38,4 +38,13 @@ public class DAOGeneroJPA implements DAOGenero {
 		List<Genero> generos = em.createQuery("FROM Genero WHERE titulo = :tituloParam").setParameter("tituloParam", titulo).getResultList();
 		return generos.size() == 1 ? generos.get(0): null;
 	}
+
+	@Override
+	public void remover(Genero genero) {
+		em = EMFactoryHelper.instance().getFactory().createEntityManager();
+		em.getTransaction().begin();
+		em.remove(genero);
+		em.getTransaction().commit();
+	}
+	
 }

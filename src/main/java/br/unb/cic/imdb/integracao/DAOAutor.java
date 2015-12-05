@@ -9,5 +9,6 @@ public interface DAOAutor {
 	public void salvar(Autor autor);
 	public List<Autor> recuperaTodos();
 	public Autor recuperaPorNome(String nome);	
+	public void remover(Autor autor);
 
 }

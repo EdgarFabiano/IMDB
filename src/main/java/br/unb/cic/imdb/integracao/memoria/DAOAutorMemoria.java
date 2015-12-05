@@ -34,4 +34,9 @@ public class DAOAutorMemoria implements DAOAutor {
 		return null;
 	}
 
+	@Override
+	public void remover(Autor autor) {
+		autores.remove(autor);
+	}
+
 }

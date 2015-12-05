@@ -15,5 +15,6 @@ public interface DAOGenero {
 	public void salvar(Genero genero);
 	public List<Genero> recuperaTodos();
 	public Genero recuperaPorTitulo(String titulo);
+	public void remover(Genero genero);
 
 }

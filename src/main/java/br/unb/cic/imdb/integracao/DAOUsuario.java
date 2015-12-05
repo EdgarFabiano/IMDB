@@ -9,5 +9,5 @@ public interface DAOUsuario {
 	public void salvar(Usuario usuario);
 	public List<Usuario> recuperaTodos();
 	public Usuario recuperaPorLogin(String login);
-	
+	public void remover(Usuario usuario);
 }

@@ -53,6 +53,10 @@ public class DAOAvaliacaoMemoria implements DAOAvaliacao {
 		}
 		return res;
 	}
-	
+
+	@Override
+	public void remover(Avaliacao avaliacao) {
+		avaliacoes.remove(avaliacao);
+	}
 
 }

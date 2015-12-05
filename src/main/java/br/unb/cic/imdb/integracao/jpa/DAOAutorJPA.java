@@ -32,4 +32,13 @@ public class DAOAutorJPA implements DAOAutor {
 		return autores.size() == 1 ? autores.get(0) : null;
 	}
 
+	@Override
+	public void remover(Autor autor) {
+		em = EMFactoryHelper.instance().getFactory().createEntityManager();
+		em.getTransaction().begin();
+		em.remove(autor);
+		em.getTransaction().commit();
+		
+	}
+
 }

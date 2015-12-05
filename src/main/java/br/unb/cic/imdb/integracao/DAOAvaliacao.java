@@ -12,4 +12,5 @@ public interface DAOAvaliacao {
 	public List<Avaliacao> recuperaTodos();
 	public List<Avaliacao> recuperaPorUsuario(Usuario usuario);
 	public List<Avaliacao> recuperaPorTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico);
+	public void remover(Avaliacao avaliacao);
 }

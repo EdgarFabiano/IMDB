@@ -6,8 +6,9 @@ import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 
 public interface DAOTrabalhoArtistico {
 
-	public void salvar (TrabalhoArtistico trabalhoArtistico);
+	public void salvar(TrabalhoArtistico trabalhoArtistico);
 	public List<TrabalhoArtistico> recuperaTodos();
 	public TrabalhoArtistico recuperaPorTitulo(String titulo);
+	public void remover(TrabalhoArtistico trabalhoArtistico);
 	
 }

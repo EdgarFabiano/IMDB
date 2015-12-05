@@ -34,4 +34,9 @@ public class DAOTrabalhoArtisticoMemoria implements DAOTrabalhoArtistico {
 		return null;
 	}
 
+	@Override
+	public void remover(TrabalhoArtistico trabalhoArtistico) {
+		trabalhosArtisticos.remove(trabalhoArtistico);
+	}
+
 }

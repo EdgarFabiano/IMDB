@@ -53,7 +53,7 @@ public class IMDBFacade {
 		this.daoUsuario = daoUsuario;
 	}
 
-	//Genero
+	//Operacoes de Genero
 	public void adicionaGenero(Genero genero) {
 		if(recuperarGeneroPorTitulo(genero.getTitulo()) == null) {
 			daoGenero.salvar(genero);
@@ -71,7 +71,13 @@ public class IMDBFacade {
 		return daoGenero.recuperaPorTitulo(titulo);
 	}
 	
-	//Autor
+	public void removerGenero(Genero genero) {
+		if(recuperarGeneroPorTitulo(genero.getTitulo()) != null) {
+			daoGenero.remover(genero);
+		}
+	}
+	
+	//Operacoes de Autor
 	public void adicionaAutor(Autor autor) {
 		if(recuperarAutorPorNome(autor.getNome()) == null) {
 			daoAutor.salvar(autor);
@@ -88,8 +94,14 @@ public class IMDBFacade {
 	public Autor recuperarAutorPorNome(String nome) {
 		return daoAutor.recuperaPorNome(nome);
 	}
+	
+	public void removerAutor(Autor autor) {
+		if(recuperarAutorPorNome(autor.getNome()) != null) {
+			daoAutor.remover(autor);
+		}
+	}
 
-	//Avaliacao
+	//Operacoes de Avaliacao
 	public void adicionaAvaliacao(Avaliacao avaliacao){
 		//O mesmo usuario pode avaliar o mesmo trabalho varias vezes(?)
 		daoAvaliacao.salvar(avaliacao);
@@ -107,7 +119,14 @@ public class IMDBFacade {
 		return daoAvaliacao.recuperaPorTrabalhoArtistico(trabalhoArtistico);
 	}
 	
-	//TrabalhoArtistico
+	public void removerAvaliacao(Avaliacao avaliacao) {
+		if (recuperarAvaliacoesPorTrabalhoArtistico(avaliacao.getAvaliado()) != null ||
+				recuperarAvaliacoesPorUsuario(avaliacao.getAvaliador()) != null) {
+			daoAvaliacao.remover(avaliacao);
+		}
+	}
+	
+	//Operacoes de TrabalhoArtistico
 	//Podem existir trabalhos com o mesmo nome, mas de autores diferentes?
 	public void adicionaTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
 		if (recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) == null) {
@@ -126,7 +145,13 @@ public class IMDBFacade {
 		return daoTrabalhoArtistico.recuperaPorTitulo(titulo);
 	}
 	
-	//Usuario
+	public void removerTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
+		if(recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) != null) {
+			daoTrabalhoArtistico.remover(trabalhoArtistico);
+		}
+	}
+	
+	//Operacoes de Usuario
 	public void adicionaUsuario(Usuario usuario) {
 		if (recuperarUsuarioPorLogin(usuario.getLogin()) == null){
 			daoUsuario.salvar(usuario);
@@ -144,4 +169,9 @@ public class IMDBFacade {
 		return daoUsuario.recuperaPorLogin(login);
 	}
 	
+	public void removerUsuario(Usuario usuario) {
+		if (recuperarUsuarioPorLogin(usuario.getLogin()) != null) {
+			daoUsuario.remover(usuario);
+		}
+	}
 }

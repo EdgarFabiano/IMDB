@@ -34,4 +34,9 @@ public class DAOUsuarioMemoria implements DAOUsuario {
 		return null;
 	}
 
+	@Override
+	public void remover(Usuario usuario) {
+		usuarios.remove(usuario);
+	}
+
 }

@@ -46,4 +46,10 @@ public class DAOGeneroMemoria implements DAOGenero {
 		//List<Genero> res = generos.stream().filter(g -> g.getTitulo().equals(titulo)).collect(Collectors.toList());
 		//return res.size() == 1 ? res.get(0) : null;
 	}
+
+	@Override
+	public void remover(Genero genero) {
+		generos.remove(genero);
+	}
+	
 }
