@@ -1,5 +1,6 @@
 package br.unb.cic.imdb.negocio;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -42,7 +43,7 @@ public class Usuario {
 		this.login = login;
 		this.senha = senha;
 		this.nome = nome;
-		this.avaliacoesFeitas = null;
+		this.avaliacoesFeitas = new ArrayList<>();
 	}
 	
 //	public Usuario(String login, String senha, String nome, int anoNascimento, int mesNascimento, int diaNascimento){
