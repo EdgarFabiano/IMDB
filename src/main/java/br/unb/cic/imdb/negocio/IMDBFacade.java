@@ -1,6 +1,9 @@
 package br.unb.cic.imdb.negocio;
 
+import java.security.InvalidParameterException;
 import java.util.List;
+
+import javax.activity.InvalidActivityException;
 
 import br.unb.cic.imdb.integracao.DAOAutor;
 import br.unb.cic.imdb.integracao.DAOAvaliacao;
@@ -176,7 +179,7 @@ public class IMDBFacade {
 			}
 		}
 		else {
-			throw new IllegalArgumentException();
+			throw new InvalidParameterException();
 		}
 	}
 	
