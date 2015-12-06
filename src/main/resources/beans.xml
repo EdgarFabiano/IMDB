@@ -7,24 +7,24 @@
 
 
 	<!-- IMPLEMENTACOES EM JPA -->
-	<!-- 
+	 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.jpa.DAOGeneroJPA" />
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.jpa.DAOAutorJPA" />
 	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.jpa.DAOAvaliacaoJPA"/>
 	<bean id="daoTrabalhoArtistico" class="br.unb.cic.imdb.integracao.jpa.DAOTrabalhoArtisticoJPA"/>
 	<bean id="daoUsuario" class="br.unb.cic.imdb.integracao.jpa.DAOUsuarioJPA"/>
 	<bean id="daoFaixaMusical" class="br.unb.cic.imdb.integracao.jpa.DAOFaixaMusicalJPA"/>
-	-->
+	
 	
 	<!-- IMPLEMENTACOES EM MEMORIA -->
-	 
+	<!-- 
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.memoria.DAOGeneroMemoria"/>
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.memoria.DAOAutorMemoria"/>
 	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.memoria.DAOAvaliacaoMemoria"/>
 	<bean id="daoTrabalhoArtistico" class="br.unb.cic.imdb.integracao.memoria.DAOTrabalhoArtisticoMemoria"/>
 	<bean id="daoUsuario" class="br.unb.cic.imdb.integracao.memoria.DAOUsuarioMemoria"/>
 	<bean id="daoFaixaMusical" class="br.unb.cic.imdb.integracao.memoria.DAOFaixaMusicalMemoria"/>
-	
+	-->
 	
 	<bean id="facade" class="br.unb.cic.imdb.negocio.IMDBFacade"
 		scope="singleton">

@@ -16,12 +16,13 @@ public class Autor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_autor")
 	private Long id;
 	
-	@Column
+	@Column(name="nome")
 	private String nome;
 	
-	@Column
+	@Column(name="descricao")
 	private String descricao;
 	
 	@OneToMany(mappedBy="autor")

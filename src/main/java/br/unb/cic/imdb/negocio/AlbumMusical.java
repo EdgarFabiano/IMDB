@@ -2,7 +2,13 @@ package br.unb.cic.imdb.negocio;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
 public class AlbumMusical extends TrabalhoArtistico{
+	
+	@OneToMany(mappedBy="album")
 	private List<FaixaMusical> faixasMusicais;
 	
 	public AlbumMusical(){ }

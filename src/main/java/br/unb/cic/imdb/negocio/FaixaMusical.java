@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,15 +15,17 @@ public class FaixaMusical {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_faixa_musical")
 	private Long id;
 	
 	@ManyToOne
+	@JoinColumn(name="id_trabalho_artistico", referencedColumnName="id_trabalho_artistico")
 	private AlbumMusical album;
 	
-	@Column
+	@Column(name="titulo")
 	private String titulo;
 	
-	@Column
+	@Column(name="duracao")
 	private int duracao;
 	
 	public FaixaMusical(){ }

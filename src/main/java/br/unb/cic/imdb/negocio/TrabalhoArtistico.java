@@ -7,31 +7,37 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_TRABALHO_ARTISTICO")
+@Inheritance
 public class TrabalhoArtistico {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_trabalho_artistico")
 	private Long id; 
 	
-	@Column
+	@Column(name="titulo")
 	private String titulo;
 	
-	@Column
+	@Column(name="ano")
 	private int ano;
 	
 	@ManyToOne
+	@JoinColumn(name="id_genero", referencedColumnName="id_genero")
 	private Genero genero;
 	
 	@ManyToOne
+	@JoinColumn(name="id_autor", referencedColumnName="id_autor")
 	private Autor autor;
 	
-	@OneToMany(mappedBy="trabalhoArtistico")
+	@OneToMany(mappedBy="avaliado")
 	private List<Avaliacao> avaliacoesRecebidas;
 
 	public TrabalhoArtistico() { }

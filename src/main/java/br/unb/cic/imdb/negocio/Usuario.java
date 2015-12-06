@@ -20,21 +20,22 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_usuario")
 	private Long id;
 	
-	@Column
+	@Column(name="login")
 	private String login;
 	
-	@Column
+	@Column(name="senha")
 	private String senha;
 	
-	@Column
+	@Column(name="usuario")
 	private String nome;
 	
-//	@Column
+//	@Column(name="nascimento")
 //	private Calendar nascimento;
 	
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="avaliador")
 	private List<Avaliacao> avaliacoesFeitas;
 	
 	public Usuario() { }

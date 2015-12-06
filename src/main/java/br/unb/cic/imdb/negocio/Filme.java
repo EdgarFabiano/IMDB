@@ -1,5 +1,8 @@
 package br.unb.cic.imdb.negocio;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Filme extends TrabalhoArtistico {
 	private int duracao;
 	
