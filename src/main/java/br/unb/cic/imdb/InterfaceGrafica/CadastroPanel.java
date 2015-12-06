@@ -173,6 +173,13 @@ public class CadastroPanel extends panels {
 					l.lblLogin.setVisible(false);
 					l.lblSenha.setVisible(false);
 					Main.Frame.setPanel(l);
+					if(Main.facade.autenticarUsuario(getLogin(), getPassword())){
+						lbl.setText("Foi");
+						Main.Frame.setPanel(new MainPanel());
+					}
+					else{
+						lbl.setText("Login Inválido");
+					}
 					
 			}
 			else{
