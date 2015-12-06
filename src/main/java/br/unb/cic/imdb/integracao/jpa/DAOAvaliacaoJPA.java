@@ -29,14 +29,14 @@ public class DAOAvaliacaoJPA implements DAOAvaliacao {
 	@Override
 	public List<Avaliacao> recuperaPorUsuario(Usuario usuario) {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<Avaliacao> avaliacoes = em.createQuery("FROM Avaliacao WHERE usuarioId = :usuarioIdParam").setParameter("usuarioIdParam", usuario.getId()).getResultList();
+		List<Avaliacao> avaliacoes = em.createQuery("FROM Avaliacao WHERE id_usuario = :usuarioIdParam").setParameter("usuarioIdParam", usuario.getId()).getResultList();
 		return avaliacoes.size() == 0 ? null : avaliacoes;
 	}
 
 	@Override
 	public List<Avaliacao> recuperaPorTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<Avaliacao> avaliacoes = em.createQuery("FROM Avaliacao WHERE trabalhoId = :trabalhoIdParam").setParameter("trabalhoIdParam", trabalhoArtistico.getId()).getResultList();
+		List<Avaliacao> avaliacoes = em.createQuery("FROM Avaliacao WHERE id_trabalho_artistico = :trabalhoIdParam").setParameter("trabalhoIdParam", trabalhoArtistico.getId()).getResultList();
 		return avaliacoes.size() == 0 ? null : avaliacoes;
 	}
 

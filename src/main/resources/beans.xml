@@ -7,7 +7,7 @@
 
 
 	<!-- IMPLEMENTACOES EM JPA -->
-	<!-- 
+	 <!--
 	<bean id="daoGenero" class="br.unb.cic.imdb.integracao.jpa.DAOGeneroJPA" />
 	<bean id="daoAutor" class="br.unb.cic.imdb.integracao.jpa.DAOAutorJPA" />
 	<bean id="daoAvaliacao" class="br.unb.cic.imdb.integracao.jpa.DAOAvaliacaoJPA"/>

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,18 +15,21 @@ public class Avaliacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_avaliacao")
 	private Long id;
 	
-	@Column
+	@Column(name="avaliacao")
 	private int avaliacao;
 	
-	@Column
+	@Column(name="comentario")
 	private String comentario;
 	
 	@ManyToOne
+	@JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
 	private Usuario avaliador;
 	
 	@ManyToOne
+	@JoinColumn(name="id_trabalho_artistico", referencedColumnName="id_trabalho_artistico")
 	private TrabalhoArtistico avaliado;
 	
 	public Avaliacao() { }

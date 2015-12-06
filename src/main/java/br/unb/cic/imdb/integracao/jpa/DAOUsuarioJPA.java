@@ -21,14 +21,14 @@ public class DAOUsuarioJPA implements DAOUsuario {
 	@Override
 	public List<Usuario> recuperaTodos() {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<Usuario> usuarios = em.createQuery("FROM Usuarios").getResultList();
+		List<Usuario> usuarios = em.createQuery("FROM Usuario").getResultList();
 		return usuarios;
 	}
 
 	@Override
 	public Usuario recuperaPorLogin(String login) {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<Usuario> usuarios = em.createQuery("FROM Usuarios WHERE login = :loginParam").setParameter("loginParam", login).getResultList();
+		List<Usuario> usuarios = em.createQuery("FROM Usuario WHERE login = :loginParam").setParameter("loginParam", login).getResultList();
 		return usuarios.size() == 1 ? usuarios.get(0) : null;
 	}
 

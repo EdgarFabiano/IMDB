@@ -170,6 +170,7 @@ public class MainPanel extends panels{
 			avaliar.setVisible(false);
 			avaliacoes.setVisible(false);
 			aux.setVisible(true);
+			aux.removeAll();
 			list.removeAll();
 			selecionado1.setText("");
 			selecionado2.setText("");
@@ -179,18 +180,18 @@ public class MainPanel extends panels{
 			}
 			list.addItemListener(new ItemListener(){
 		        public void itemStateChanged(ItemEvent ie){
-		        	Autor autor = Main.facade.recuperarAutorPorNome(list.getSelectedItem());
-		        	selecionado1.setText("Autor: "+autor.getNome());
-		        	selecionado2.setText("Descrição: "+autor.getDescricao());
+		        	Autor aut = Main.facade.recuperarAutorPorNome(list.getSelectedItem());
+		        	selecionado1.setText("Autor: "+aut.getNome());
+		        	selecionado2.setText("Descrição: "+aut.getDescricao());
 		        	selecionado3.setText("");
 		        	aux.removeAll();
-		        	if(autor.getProducaoArtistica() != null){
-			        	for(int i = 0; i < autor.getProducaoArtistica().size(); i++){
-			        		System.out.println("\n\n\n"+autor.getProducaoArtistica().size()+"\n\n\n");
-			        		aux.add(autor.getProducaoArtistica().get(i).getTitulo());//+"  "+autor.getProducaoArtistica().get(i).getAno() + "  "+autor.getProducaoArtistica().get(i).getGenero());
+		        	if(aut.getProducaoArtistica() != null){
+			        	for(int i = 0; i < aut.getProducaoArtistica().size(); i++){
+			        		aux.add(aut.getProducaoArtistica().get(i).getTitulo());//+"  "+autor.getProducaoArtistica().get(i).getAno() + "  "+autor.getProducaoArtistica().get(i).getGenero());
 			        	}
 			        }
 		        	else{
+		        		System.out.println("não foi");
 			        	aux.add("Nenhuma produção artística");
 			        }
 		        }
@@ -204,6 +205,7 @@ public class MainPanel extends panels{
 			titulo.setSelected(true);
 			genero.setSelected(false);
 			aux.setVisible(false);
+			list.removeAll();
 			selecionado1.setText("");
 			selecionado2.setText("");
 			selecionado3.setText("");
@@ -214,7 +216,6 @@ public class MainPanel extends panels{
 			list.addItemListener(new ItemListener(){
 		        public void itemStateChanged(ItemEvent ie){
 		        	trab = Main.facade.recuperarTrabalhoArtisticoPorTitulo(list.getSelectedItem());
-		        	JFrame parent = new JFrame();
 		        	avaliar.setVisible(true);
 		        	avaliacoes.setVisible(true);
 		        	selecionado1.setText(Integer.toString(trab.getAno()));
@@ -232,6 +233,7 @@ public class MainPanel extends panels{
 			list.removeAll();
 			aux.removeAll();
 			aux.setVisible(false);
+			avaliacoes.setVisible(false);
 			avaliar.setVisible(false);
 			selecionado1.setText("");
 			selecionado2.setText("");

@@ -13,12 +13,13 @@ public class Genero {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_genero")
 	private Long id;
 	
-	@Column
+	@Column(name="titulo")
 	private String titulo;
 	
-	@Column
+	@Column(name="descricao")
 	private String descricao;
 	
 	public Genero() { } 

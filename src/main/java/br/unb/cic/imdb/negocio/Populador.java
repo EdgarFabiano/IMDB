@@ -51,8 +51,13 @@ public class Populador {
 		Usuario usuario1 = new Usuario("bruno", "senha", "bruno");
 		usuario1.setId((long) 1);
 		facade.adicionaUsuario(usuario1);
+
 		Usuario usuario2 = new Usuario("e", "e", "e");
 		usuario2.setId((long) 2);
+
+		//Usuario usuario2 = new Usuario("edgar", "senha", "edgar");
+		//usuario2.setId((long) 2);
+
 		facade.adicionaUsuario(usuario2);
 		Usuario usuario3 = new Usuario("lucas", "senha", "lucas");
 		usuario3.setId((long) 3);
@@ -140,6 +145,12 @@ public class Populador {
 		FaixaMusical faixa8 = new FaixaMusical(album4, "Brave New World", 2);
 		faixa8.setId((long) 8);
 		facade.adicionarFaixaMusical(faixa8);
+		
+		autor1.setProducaoArtistica(autor1.getProducaoArtistica());
+		autor2.setProducaoArtistica(autor2.getProducaoArtistica());
+		autor3.setProducaoArtistica(autor3.getProducaoArtistica());
+		autor4.setProducaoArtistica(autor4.getProducaoArtistica());
+		
 	}
 
 }

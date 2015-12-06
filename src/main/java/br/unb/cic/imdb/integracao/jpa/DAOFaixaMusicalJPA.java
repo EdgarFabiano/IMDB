@@ -28,7 +28,7 @@ public class DAOFaixaMusicalJPA implements DAOFaixaMusical {
 	@Override
 	public List<FaixaMusical> recuperaPorAlbum(AlbumMusical albumMusical) {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<FaixaMusical> faixas = em.createQuery("FROM FaixaMusical WHERE albumId = :albumIdParam").setParameter("albumIdParam", albumMusical.getId()).getResultList();
+		List<FaixaMusical> faixas = em.createQuery("FROM FaixaMusical WHERE id_trabalho_artistico = :albumIdParam").setParameter("albumIdParam", albumMusical.getId()).getResultList();
 		return faixas.size() == 0 ? null : faixas;
 	}
 
