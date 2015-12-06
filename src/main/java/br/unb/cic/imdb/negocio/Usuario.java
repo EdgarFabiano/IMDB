@@ -30,8 +30,8 @@ public class Usuario {
 	@Column
 	private String nome;
 	
-	@Column
-	private Calendar nascimento;
+//	@Column
+//	private Calendar nascimento;
 	
 	@OneToMany(mappedBy="usuario")
 	private List<Avaliacao> avaliacoesFeitas;
@@ -45,13 +45,13 @@ public class Usuario {
 		this.avaliacoesFeitas = null;
 	}
 	
-	public Usuario(String login, String senha, String nome, int anoNascimento, int mesNascimento, int diaNascimento){
-		this.login = login;
-		this.senha = senha;
-		this.nome = nome;
-		this.avaliacoesFeitas = null;
-		setNascimento(anoNascimento, mesNascimento, diaNascimento);
-	}
+//	public Usuario(String login, String senha, String nome, int anoNascimento, int mesNascimento, int diaNascimento){
+//		this.login = login;
+//		this.senha = senha;
+//		this.nome = nome;
+//		this.avaliacoesFeitas = null;
+//		setNascimento(anoNascimento, mesNascimento, diaNascimento);
+//	}
 	
 	public Long getId() {
 		return id;
@@ -85,18 +85,18 @@ public class Usuario {
 		this.nome = nome;
 	}
 	
-	public Date getNascimento() {
-		return nascimento.getTime();
-	}
-	
-	public void setNascimento(Date data) {
-		this.nascimento.setTime(data);
-	}
-	
-	//Caso queira setar o nascimento direto pelo dia, mes e ano.
-	public void setNascimento(int ano, int mes, int dia) {
-		this.nascimento.set(ano, mes, dia);
-	}
+//	public Date getNascimento() {
+//		return nascimento.getTime();
+//	}
+//	
+//	public void setNascimento(Date data) {
+//		this.nascimento.setTime(data);
+//	}
+//	
+//	//Caso queira setar o nascimento direto pelo dia, mes e ano.
+//	public void setNascimento(int ano, int mes, int dia) {
+//		this.nascimento.set(ano, mes, dia);
+//	}
 	
 	public void adicionaAvaliacaoFeita(Avaliacao avaliacao) {
 		avaliacoesFeitas.add(avaliacao);
