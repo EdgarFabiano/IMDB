@@ -130,13 +130,18 @@ public class LoginPanel extends panels implements ActionListener{
 			setPassword(senhaField.getText());
 			setUser(userField.getText());
 			/*Colocar as condições caso o usuário não esteja no BD*/
-			
-			if(Main.facade.autenticarUsuario(getUser(), getPassword()) == true){
-				lbl.setText("Foi");
-				Main.Frame.setPanel(new MainPanel());
+			try {
+				if(Main.facade.autenticarUsuario(getUser(), getPassword()) == true){
+					lbl.setText("Foi");
+					Main.Frame.setPanel(new MainPanel());
+				}
+				else{
+					lbl.setText("Login Inválido");
+					cadastroButton.setVisible(true);
+				}
 			}
-			else{
-				lbl.setText("Login Inválido");
+			catch (NullPointerException exception) {
+				lbl.setText("Conta Inexistente");
 				cadastroButton.setVisible(true);
 			}
 
