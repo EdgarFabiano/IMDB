@@ -127,6 +127,9 @@ public class LoginPanel extends panels implements ActionListener{
 			/*Colocar as condições caso o usuário não esteja no BD*/
 			try {
 				if(Main.facade.autenticarUsuario(getUser(), getPassword())){
+					Main.user.setLogin(getUser());
+					Main.user.setNome(getName());
+					Main.user.setSenha(getPassword());
 					lbl.setText("Foi");
 					Main.Frame.setPanel(new MainPanel());
 				}

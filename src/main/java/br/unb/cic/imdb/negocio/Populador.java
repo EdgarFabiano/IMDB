@@ -51,7 +51,7 @@ public class Populador {
 		Usuario usuario1 = new Usuario("bruno", "senha", "bruno");
 		usuario1.setId((long) 1);
 		facade.adicionaUsuario(usuario1);
-		Usuario usuario2 = new Usuario("edgar", "senha", "edgar");
+		Usuario usuario2 = new Usuario("e", "e", "e");
 		usuario2.setId((long) 2);
 		facade.adicionaUsuario(usuario2);
 		Usuario usuario3 = new Usuario("lucas", "senha", "lucas");

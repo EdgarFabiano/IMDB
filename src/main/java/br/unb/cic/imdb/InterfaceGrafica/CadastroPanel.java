@@ -164,7 +164,11 @@ public class CadastroPanel extends panels {
 			setNome(newNameField.getText());
 			
 			if(password.equals(Confimapassword)){
-			Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
+				Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
+				Main.user.setLogin(loginField.getText());
+				Main.user.setNome(newNameField.getText());
+				Main.user.setSenha(senhaField.getText());
+			
 					lbl.setText("Foi");
 					LoginPanel l = new LoginPanel();
 					l.lbl.setText("Usuário cadastrado com Sucesso");
