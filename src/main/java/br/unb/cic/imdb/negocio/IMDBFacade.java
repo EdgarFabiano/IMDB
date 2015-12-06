@@ -170,7 +170,7 @@ public class IMDBFacade {
 	
 	//Operacoes de Usuario
 	public void adicionaUsuario(Usuario usuario) {
-		if (!usuario.getLogin().equals("") || !usuario.getNome().equals("") || !usuario.getSenha().equals("")) {
+		if (!usuario.getLogin().equals("") && !usuario.getNome().equals("") && !usuario.getSenha().equals("")) {
 			if (recuperarUsuarioPorLogin(usuario.getLogin()) == null){
 				daoUsuario.salvar(usuario);
 			}
