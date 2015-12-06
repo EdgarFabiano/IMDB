@@ -9,11 +9,16 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import br.unb.cic.imdb.negocio.Main;
+import br.unb.cic.imdb.negocio.IMDBFacade;
+import br.unb.cic.imdb.negocio.Usuario;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
+
+import org.hibernate.cfg.naming.ImprovedNamingStrategyDelegator;
 
 
 /** Painel de Login do usuário
@@ -125,6 +130,9 @@ public class LoginPanel extends panels implements ActionListener{
 			setPassword(senhaField.getText());
 			setUser(userField.getText());
 			/*Colocar as condições caso o usuário não esteja no BD*/
+			
+			Usuario u = new Usuario(null, getPassword(), getUser());
+			
 			
 			lbl.setText("Usuário não cadastrado");
 			System.out.println(getUser()+" "+getPassword());

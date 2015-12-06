@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 
 import br.unb.cic.imdb.negocio.Main;
+import javax.swing.JRadioButton;
 
 /** Painel principal do programa
  * 
@@ -27,6 +28,8 @@ public class MainPanel extends panels{
 	private Label selecionado = new Label("Selecionado");
 	private JButton exit;
 	private JButton logout;
+	private JRadioButton autor;
+	private JRadioButton titulo;
 	
 	public MainPanel() {
 		setup();
@@ -67,6 +70,23 @@ public class MainPanel extends panels{
 		logout.addActionListener(this);
 		add(logout);
 		
+		autor = new JRadioButton("Autor");
+		autor.setForeground(Color.WHITE);
+		autor.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		autor.setSelected(true);
+		autor.setBackground(Color.DARK_GRAY);
+		autor.setBounds(52, 56, 127, 25);
+		autor.addActionListener(this);
+		add(autor);
+		
+		titulo = new JRadioButton("Título");
+		titulo.setForeground(Color.WHITE);
+		titulo.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		titulo.setBackground(Color.DARK_GRAY);
+		titulo.setBounds(275, 56, 127, 25);
+		titulo.addActionListener(this);
+		add(titulo);
+		
 
 	}
 
@@ -77,6 +97,14 @@ public class MainPanel extends panels{
 		}
 		if(e.getSource() == exit){
 			Main.Frame.setPanel(new LoginPanel());
+		}
+		if(e.getSource() == autor){
+			titulo.setSelected(false);
+			autor.setSelected(true);
+		}
+		if(e.getSource() == titulo){
+			autor.setSelected(false);
+			titulo.setSelected(true);
 		}
 		
 	}
