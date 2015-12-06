@@ -146,10 +146,10 @@ public class Populador {
 		faixa8.setId((long) 8);
 		facade.adicionarFaixaMusical(faixa8);
 		
-		autor1.setProducaoArtistica(autor1.getProducaoArtistica());
-		autor2.setProducaoArtistica(autor2.getProducaoArtistica());
-		autor3.setProducaoArtistica(autor3.getProducaoArtistica());
-		autor4.setProducaoArtistica(autor4.getProducaoArtistica());
+		autor1.setProducaoArtistica(facade.recuperarTrabalhoArtisticoPorAutor(autor1));
+		autor2.setProducaoArtistica(facade.recuperarTrabalhoArtisticoPorAutor(autor2));
+		autor3.setProducaoArtistica(facade.recuperarTrabalhoArtisticoPorAutor(autor3));
+		autor4.setProducaoArtistica(facade.recuperarTrabalhoArtisticoPorAutor(autor4));
 		
 	}
 
