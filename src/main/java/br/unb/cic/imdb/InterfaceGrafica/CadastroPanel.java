@@ -11,6 +11,7 @@ import br.unb.cic.imdb.negocio.Main;
 
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
 /** Painel de cadastro do novo usuário
@@ -26,9 +27,11 @@ public class CadastroPanel extends panels {
 	private static final long serialVersionUID = 1L;
 	private JButton CadastroButton;
 	private JButton backButton;
-	private JTextField newUserField;
+	private JTextField loginField;
 	private JTextField senhaField;
 	private JTextField ConfirmaSenhaField;
+	private JTextField newNameField;
+	
 	private JLabel lbl;
 	
 	private String user;
@@ -54,7 +57,14 @@ public class CadastroPanel extends panels {
 	public void setConfirmaPassword(String password) {
 		this.Confimapassword = password;
 	}
-
+	
+	private String nome;
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 	/**Construtor da classe CadastroPanel
 	 * Gera o painel que será inserido na MainFrame
 	 */
@@ -77,13 +87,14 @@ public class CadastroPanel extends panels {
 		this.add(CadastroButton);
 		
 		
-		newUserField = new JTextField();
-		newUserField.setToolTipText("Informar novo Login");
-		newUserField.setBounds(342, 234, 215, 22);
-		add(newUserField);
-		newUserField.setColumns(10);
+		loginField = new JTextField();
+		loginField.setToolTipText("Informar novo Login");
+		loginField.setBounds(342, 234, 215, 22);
+		add(loginField);
+		loginField.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Novo Usu\u00E1rio");
+		lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblLogin.setBounds(214, 237, 116, 16);
@@ -97,6 +108,7 @@ public class CadastroPanel extends panels {
 		
 		
 		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenha.setForeground(Color.WHITE);
 		lblSenha.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblSenha.setBounds(260, 284, 56, 16);
@@ -111,7 +123,7 @@ public class CadastroPanel extends panels {
 		
 		lbl = new JLabel("Cadastro");
 		lbl.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lbl.setBounds(392, 170, 116, 30);
+		lbl.setBounds(387, 102, 116, 30);
 		lbl.setForeground(Color.WHITE);
 		add(lbl);
 		
@@ -122,6 +134,7 @@ public class CadastroPanel extends panels {
 		ConfirmaSenhaField.setColumns(10);
 		
 		JLabel lblConfirmarSenha = new JLabel("Confirmar Senha");
+		lblConfirmarSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblConfirmarSenha.setForeground(Color.WHITE);
 		lblConfirmarSenha.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblConfirmarSenha.setBounds(184, 333, 146, 16);
@@ -132,13 +145,29 @@ public class CadastroPanel extends panels {
 		backButton.addActionListener(this);
 		backButton.setBounds(401, 464, 97, 25);
 		add(backButton);
+		
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNome.setForeground(Color.WHITE);
+		lblNome.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblNome.setBounds(214, 192, 116, 16);
+		add(lblNome);
+		
+		newNameField = new JTextField();
+		newNameField.setToolTipText("Informar novo Login");
+		newNameField.setColumns(10);
+		newNameField.setBounds(342, 190, 215, 22);
+		add(newNameField);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == CadastroButton){
 			setPassword(senhaField.getText());
-			setUser(newUserField.getText());
+			setUser(loginField.getText());
 			setConfirmaPassword(ConfirmaSenhaField.getText());
+			setNome(newNameField.getText());
+			
+			
 			lbl.setText("Foi!");
 			System.out.println(getUser()+" "+getPassword()+" "+getConfirmaPassword());
 		}

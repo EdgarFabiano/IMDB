@@ -120,7 +120,7 @@ public class LoginPanel extends panels implements ActionListener{
 		cadastroButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		cadastroButton.setBounds(384, 444, 132, 25);
 		this.add(cadastroButton);
-		//cadastroButton.setVisible(false);
+		cadastroButton.setVisible(false);
 		
 		
 	}
@@ -131,13 +131,15 @@ public class LoginPanel extends panels implements ActionListener{
 			setUser(userField.getText());
 			/*Colocar as condições caso o usuário não esteja no BD*/
 			
-			Usuario u = new Usuario(null, getPassword(), getUser());
-			
-			
-			lbl.setText("Usuário não cadastrado");
-			System.out.println(getUser()+" "+getPassword());
-			Main.Frame.setPanel(new MainPanel());
-			//cadastroButton.setVisible(true);
+			if(Main.facade.autenticarUsuario(getUser(), getPassword()) == true){
+				lbl.setText("Foi");
+				Main.Frame.setPanel(new MainPanel());
+			}
+			else{
+				lbl.setText("Login Inválido");
+				cadastroButton.setVisible(true);
+			}
+
 		}
 		if(e.getSource() == cadastroButton){
 			this.setVisible(false);

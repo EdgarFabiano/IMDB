@@ -7,6 +7,7 @@ public class Main {
 	public static IMDBFacade facade;
 	
 	public static void main(String args[]) {
+		facade = new IMDBFacade();
 		Frame = new MainFrame(new LoginPanel()); 
 	}
 
