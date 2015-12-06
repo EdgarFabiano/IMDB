@@ -9,6 +9,9 @@ public class Main {
 	
 	public static void main(String args[]) {
 		facade = ContextoID.instance().facade();
+		Populador pop = new Populador();
+		pop.popular(facade);
+		
 		Frame = new MainFrame(new LoginPanel()); 
 	}
 

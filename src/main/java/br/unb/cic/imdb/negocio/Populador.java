@@ -1,11 +1,8 @@
 package br.unb.cic.imdb.negocio;
 
-public class Populador {
-	private IMDBFacade facade;
-
-	public Populador(IMDBFacade facade) {
-		this.facade = facade;
-	}
+public class Populador {	
+	
+	public Populador() {}
 	/**
 	 * SOMENTE UTILIZAR COM A IMPLEMENTACAO EM MEMORIA
 	 * (pra usar com JPA retirar os setId)
@@ -50,7 +47,7 @@ public class Populador {
 	 * Nao criei avaliacoes mas depois eh tranquilo de adicionar por aqui
 	 * Soh dar um new com os parametros la e mandar salvar no DAO e GG
 	 */
-	public void popular () {
+	public void popular (IMDBFacade facade) {
 		Usuario usuario1 = new Usuario("bruno", "senha", "bruno");
 		usuario1.setId((long) 1);
 		facade.adicionaUsuario(usuario1);
@@ -105,7 +102,7 @@ public class Populador {
 		facade.adicionaTrabalhoArtistico(filme1);
 		Filme filme2 = new Filme("Star Wars IV", 1980, genero1, autor2, 180);
 		filme2.setId((long) 6);
-		facade.adicionaTrabalhoArtistico(filme2);
+//		facade.adicionaTrabalhoArtistico(filme2);
 		Filme filme3 = new Filme("Star Wars VI", 1983, genero1, autor2, 180);
 		filme3.setId((long) 7);
 		facade.adicionaTrabalhoArtistico(filme3);
@@ -121,28 +118,28 @@ public class Populador {
 		
 		FaixaMusical faixa1 = new FaixaMusical(album1, "Vai Safadao", 2);
 		faixa1.setId((long) 1);
-		facade.adicionarFaixaMusical(faixa1);
+//		facade.adicionarFaixaMusical(faixa1);
 		FaixaMusical faixa2 = new FaixaMusical(album1, "Camarote", 2);
 		faixa2.setId((long) 2);
-		facade.adicionarFaixaMusical(faixa2);
+//		facade.adicionarFaixaMusical(faixa2);
 		FaixaMusical faixa3 = new FaixaMusical(album2, "Voce Merece Cache", 2);
 		faixa3.setId((long) 3);
-		facade.adicionarFaixaMusical(faixa3);
+//		facade.adicionarFaixaMusical(faixa3);
 		FaixaMusical faixa4 = new FaixaMusical(album2, "Vou Pagar pra Ver", 2);
 		faixa4.setId((long) 4);
-		facade.adicionarFaixaMusical(faixa4);
+//		facade.adicionarFaixaMusical(faixa4);
 		FaixaMusical faixa5 = new FaixaMusical(album3, "Powerslave", 2);
 		faixa5.setId((long) 5);
-		facade.adicionarFaixaMusical(faixa5);
+//		facade.adicionarFaixaMusical(faixa5);
 		FaixaMusical faixa6 = new FaixaMusical(album3, "Fear of the Dark", 2);
 		faixa6.setId((long) 6);
-		facade.adicionarFaixaMusical(faixa6);
+//		facade.adicionarFaixaMusical(faixa6);
 		FaixaMusical faixa7 = new FaixaMusical(album4, "The Trooper", 2);
 		faixa7.setId((long) 7);
-		facade.adicionarFaixaMusical(faixa7);
+//		facade.adicionarFaixaMusical(faixa7);
 		FaixaMusical faixa8 = new FaixaMusical(album4, "Brave New World", 2);
 		faixa8.setId((long) 8);
-		facade.adicionarFaixaMusical(faixa8);
+//		facade.adicionarFaixaMusical(faixa8);
 	}
 
 }
