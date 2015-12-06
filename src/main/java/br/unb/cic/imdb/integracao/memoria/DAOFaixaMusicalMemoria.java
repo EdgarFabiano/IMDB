@@ -10,6 +10,10 @@ import br.unb.cic.imdb.negocio.FaixaMusical;
 public class DAOFaixaMusicalMemoria implements DAOFaixaMusical {
 
 	private List<FaixaMusical> faixasMusicais;
+	
+	public DAOFaixaMusicalMemoria() {
+		faixasMusicais = new ArrayList<>();
+	}
 	@Override
 	public void salvar(FaixaMusical faixaMusical) {
 		faixasMusicais.add(faixaMusical);

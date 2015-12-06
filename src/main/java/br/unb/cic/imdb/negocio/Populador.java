@@ -100,9 +100,9 @@ public class Populador {
 		Filme filme1 = new Filme("Star Wars IV", 1977, genero1, autor2, 180);
 		filme1.setId((long) 5);
 		facade.adicionaTrabalhoArtistico(filme1);
-		Filme filme2 = new Filme("Star Wars IV", 1980, genero1, autor2, 180);
+		Filme filme2 = new Filme("Star Wars V", 1980, genero1, autor2, 180);
 		filme2.setId((long) 6);
-//		facade.adicionaTrabalhoArtistico(filme2);
+		facade.adicionaTrabalhoArtistico(filme2);
 		Filme filme3 = new Filme("Star Wars VI", 1983, genero1, autor2, 180);
 		filme3.setId((long) 7);
 		facade.adicionaTrabalhoArtistico(filme3);
@@ -118,28 +118,28 @@ public class Populador {
 		
 		FaixaMusical faixa1 = new FaixaMusical(album1, "Vai Safadao", 2);
 		faixa1.setId((long) 1);
-//		facade.adicionarFaixaMusical(faixa1);
+		facade.adicionarFaixaMusical(faixa1);
 		FaixaMusical faixa2 = new FaixaMusical(album1, "Camarote", 2);
 		faixa2.setId((long) 2);
-//		facade.adicionarFaixaMusical(faixa2);
+		facade.adicionarFaixaMusical(faixa2);
 		FaixaMusical faixa3 = new FaixaMusical(album2, "Voce Merece Cache", 2);
 		faixa3.setId((long) 3);
-//		facade.adicionarFaixaMusical(faixa3);
+		facade.adicionarFaixaMusical(faixa3);
 		FaixaMusical faixa4 = new FaixaMusical(album2, "Vou Pagar pra Ver", 2);
 		faixa4.setId((long) 4);
-//		facade.adicionarFaixaMusical(faixa4);
+		facade.adicionarFaixaMusical(faixa4);
 		FaixaMusical faixa5 = new FaixaMusical(album3, "Powerslave", 2);
 		faixa5.setId((long) 5);
-//		facade.adicionarFaixaMusical(faixa5);
+		facade.adicionarFaixaMusical(faixa5);
 		FaixaMusical faixa6 = new FaixaMusical(album3, "Fear of the Dark", 2);
 		faixa6.setId((long) 6);
-//		facade.adicionarFaixaMusical(faixa6);
+		facade.adicionarFaixaMusical(faixa6);
 		FaixaMusical faixa7 = new FaixaMusical(album4, "The Trooper", 2);
 		faixa7.setId((long) 7);
-//		facade.adicionarFaixaMusical(faixa7);
+		facade.adicionarFaixaMusical(faixa7);
 		FaixaMusical faixa8 = new FaixaMusical(album4, "Brave New World", 2);
 		faixa8.setId((long) 8);
-//		facade.adicionarFaixaMusical(faixa8);
+		facade.adicionarFaixaMusical(faixa8);
 	}
 
 }
