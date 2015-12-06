@@ -45,14 +45,14 @@ public class DAOTrabalhoArtisticoJPA implements DAOTrabalhoArtistico {
 	@Override
 	public List<TrabalhoArtistico> recuperaPorGenero(Genero genero) {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<TrabalhoArtistico> trabalhos = em.createQuery("FROM TrabalhoArtistico WHERE generoId = :generoIdParam").setParameter("generoIdParam", genero.getId()).getResultList();
+		List<TrabalhoArtistico> trabalhos = em.createQuery("FROM TrabalhoArtistico WHERE id_genero = :generoIdParam").setParameter("generoIdParam", genero.getId()).getResultList();
 		return trabalhos.size() == 0 ? null : trabalhos;
 	}
 
 	@Override
 	public List<TrabalhoArtistico> recuperaPorAutor(Autor autor) {
 		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<TrabalhoArtistico> trabalhos = em.createQuery("FROM TrabalhoArtistico WHERE autorId = :autorIdParam").setParameter("autorIdParam", autor.getId()).getResultList();
+		List<TrabalhoArtistico> trabalhos = em.createQuery("FROM TrabalhoArtistico WHERE id_autor = :autorIdParam").setParameter("autorIdParam", autor.getId()).getResultList();
 		return trabalhos.size() == 0 ? null : trabalhos;
 	}
 
