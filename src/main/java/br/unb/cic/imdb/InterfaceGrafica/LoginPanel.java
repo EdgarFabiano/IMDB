@@ -32,9 +32,10 @@ public class LoginPanel extends panels implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JButton enterButton;
-	private JTextField userField;
-	private JTextField senhaField;
-	JLabel logo;
+	public JTextField userField;
+	public JTextField senhaField;
+	public JLabel lblSenha;
+	public JLabel lblLogin;
 	
 	private String user;
 	public String getUser() {
@@ -45,7 +46,7 @@ public class LoginPanel extends panels implements ActionListener{
 	}
 
 	private String password;
-	private JLabel lbl;
+	public JLabel lbl;
 	private JButton cadastroButton;
 	public String getPassword() {
 		return password;
@@ -74,7 +75,8 @@ public class LoginPanel extends panels implements ActionListener{
 		add(userField);
 		userField.setColumns(10);
 		
-		JLabel lblLogin = new JLabel("Usu\u00E1rio");
+		lblLogin = new JLabel("Login");
+		lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblLogin.setBounds(247, 237, 83, 16);
@@ -87,10 +89,11 @@ public class LoginPanel extends panels implements ActionListener{
 		senhaField.setColumns(10);
 		
 		
-		JLabel lblSenha = new JLabel("Senha");
+		lblSenha = new JLabel("Senha");
+		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenha.setForeground(Color.WHITE);
 		lblSenha.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblSenha.setBounds(247, 285, 56, 16);
+		lblSenha.setBounds(274, 284, 56, 16);
 		add(lblSenha);
 		
 		enterButton = new JButton("Entrar");
@@ -99,15 +102,7 @@ public class LoginPanel extends panels implements ActionListener{
 		enterButton.addActionListener(this);
 		enterButton.setBounds(394, 343, 111, 40);
 		this.add(enterButton);
-		
-		
-		logo = new JLabel();
-		logo.setToolTipText("IMDB");
-//		Image img = new ImageIcon(getClass().getResource("logo.png")).getImage();
-//		logo.setIcon(new ImageIcon(img));
-		logo.setBounds(350, 49, 200, 103);
-		add(logo);
-		
+				
 		lbl = new JLabel("Login");
 		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl.setFont(new Font("Tahoma", Font.PLAIN, 26));
@@ -131,7 +126,7 @@ public class LoginPanel extends panels implements ActionListener{
 			setUser(userField.getText());
 			/*Colocar as condições caso o usuário não esteja no BD*/
 			try {
-				if(Main.facade.autenticarUsuario(getUser(), getPassword()) == true){
+				if(Main.facade.autenticarUsuario(getUser(), getPassword())){
 					lbl.setText("Foi");
 					Main.Frame.setPanel(new MainPanel());
 				}

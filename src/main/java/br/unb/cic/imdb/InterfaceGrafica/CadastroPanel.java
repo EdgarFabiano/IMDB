@@ -8,9 +8,11 @@ import javax.swing.JLabel;
 import java.awt.Color;
 
 import br.unb.cic.imdb.negocio.Main;
+import br.unb.cic.imdb.negocio.Usuario;
 
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
 
 
@@ -34,12 +36,12 @@ public class CadastroPanel extends panels {
 	
 	private JLabel lbl;
 	
-	private String user;
-	public String getUser() {
-		return user;
+	private String login;
+	public String getLogin() {
+		return login;
 	}
-	public void setUser(String user) {
-		this.user = user;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	private String password;
@@ -93,7 +95,7 @@ public class CadastroPanel extends panels {
 		add(loginField);
 		loginField.setColumns(10);
 		
-		JLabel lblLogin = new JLabel("Novo Usu\u00E1rio");
+		JLabel lblLogin = new JLabel("Login");
 		lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -114,16 +116,10 @@ public class CadastroPanel extends panels {
 		lblSenha.setBounds(260, 284, 56, 16);
 		add(lblSenha);
 		
-		JLabel logo = new JLabel();
-		logo.setToolTipText("IMDB");
-		//Image img = new ImageIcon(this.getClass().getResource("logo.png")).getImage();
-		//logo.setIcon(new ImageIcon(img));
-		logo.setBounds(342, 49, 200, 103);
-		add(logo);
-		
 		lbl = new JLabel("Cadastro");
+		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lbl.setBounds(387, 102, 116, 30);
+		lbl.setBounds(202, 102, 495, 30);
 		lbl.setForeground(Color.WHITE);
 		add(lbl);
 		
@@ -163,13 +159,26 @@ public class CadastroPanel extends panels {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == CadastroButton){
 			setPassword(senhaField.getText());
-			setUser(loginField.getText());
+			setLogin(loginField.getText());
 			setConfirmaPassword(ConfirmaSenhaField.getText());
 			setNome(newNameField.getText());
 			
+			if(password.equals(Confimapassword)){
+			Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
+					lbl.setText("Foi");
+					LoginPanel l = new LoginPanel();
+					l.lbl.setText("Usuário cadastrado com Sucesso");
+					l.userField.setVisible(false);
+					l.senhaField.setVisible(false);
+					l.lblLogin.setVisible(false);
+					l.lblSenha.setVisible(false);
+					Main.Frame.setPanel(l);
+					
+			}
+			else{
+				lbl.setText("Erro na Confimação de senha ");
+			}
 			
-			lbl.setText("Foi!");
-			System.out.println(getUser()+" "+getPassword()+" "+getConfirmaPassword());
 		}
 		
 		if(e.getSource() == backButton){
