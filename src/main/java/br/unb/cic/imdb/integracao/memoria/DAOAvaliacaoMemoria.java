@@ -34,10 +34,7 @@ public class DAOAvaliacaoMemoria implements DAOAvaliacao {
 				res.add(avaliacao);
 			}
 		}
-		if (res.isEmpty()){
-			return null;
-		}
-		return res;
+		return res.isEmpty() ? null : res;
 	}
 
 	@Override
@@ -48,10 +45,7 @@ public class DAOAvaliacaoMemoria implements DAOAvaliacao {
 				res.add(avaliacao);
 			}
 		}
-		if (res.isEmpty()){
-			return null;
-		}
-		return res;
+		return res.isEmpty() ? null : res;
 	}
 
 	@Override

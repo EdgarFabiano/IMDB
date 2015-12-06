@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.unb.cic.imdb.integracao.DAOAutor;
 import br.unb.cic.imdb.integracao.DAOAvaliacao;
+import br.unb.cic.imdb.integracao.DAOFaixaMusical;
 import br.unb.cic.imdb.integracao.DAOGenero;
 import br.unb.cic.imdb.integracao.DAOTrabalhoArtistico;
 import br.unb.cic.imdb.integracao.DAOUsuario;
@@ -22,6 +23,7 @@ public class IMDBFacade {
 	private DAOAvaliacao daoAvaliacao;
 	private DAOTrabalhoArtistico daoTrabalhoArtistico;
 	private DAOUsuario daoUsuario;
+	private DAOFaixaMusical daoFaixaMusical;
 
 	public IMDBFacade() {}
 	
@@ -51,6 +53,10 @@ public class IMDBFacade {
 
 	public void setDaoUsuario(DAOUsuario daoUsuario) {
 		this.daoUsuario = daoUsuario;
+	}
+
+	public void setDaoFaixaMusical(DAOFaixaMusical daoFaixaMusical) {
+		this.daoFaixaMusical = daoFaixaMusical;
 	}
 
 	//Operacoes de Genero
@@ -145,6 +151,14 @@ public class IMDBFacade {
 		return daoTrabalhoArtistico.recuperaPorTitulo(titulo);
 	}
 	
+	public List<TrabalhoArtistico> recuperarTrabalhoArtisticoPorGenero(Genero genero) {
+		return daoTrabalhoArtistico.recuperaPorGenero(genero);
+	}
+	
+	public List<TrabalhoArtistico> recuperarTrabalhoArtisticoPorAutor(Autor autor) {
+		return daoTrabalhoArtistico.recuperaPorAutor(autor);
+	}
+	
 	public void removerTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
 		if(recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) != null) {
 			daoTrabalhoArtistico.remover(trabalhoArtistico);
@@ -173,5 +187,36 @@ public class IMDBFacade {
 		if (recuperarUsuarioPorLogin(usuario.getLogin()) != null) {
 			daoUsuario.remover(usuario);
 		}
+	}
+	
+	public boolean autenticarUsuario (String login, String senha) {
+		Usuario usuario = daoUsuario.recuperaPorLogin(login);
+		return senha.equals(usuario.getSenha());
+	}
+	
+	//Operacoes de Faixa Musical
+	public void adicionarFaixaMusical(FaixaMusical faixaMusical) {
+		if (recuperarFaixaMusicalPorTitulo(faixaMusical.getTitulo()) == null) {
+			daoFaixaMusical.salvar(faixaMusical);
+		}
+		else {
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public List<FaixaMusical> recuperarFaixasMusicais() {
+		return daoFaixaMusical.recuperaTodos();
+	}
+	
+	public FaixaMusical recuperarFaixaMusicalPorTitulo(String titulo) {
+		return daoFaixaMusical.recuperaPorTitulo(titulo);
+	}
+	
+	public List<FaixaMusical> recuperarFaixaMusicalPorAutor(AlbumMusical albumMusical) {
+		return daoFaixaMusical.recuperaPorAlbum(albumMusical);
+	}
+	
+	public void removerFaixaMusical(FaixaMusical faixaMusical) {
+		daoFaixaMusical.remover(faixaMusical);
 	}
 }

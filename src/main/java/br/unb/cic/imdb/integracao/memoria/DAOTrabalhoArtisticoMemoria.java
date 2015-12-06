@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.unb.cic.imdb.integracao.DAOTrabalhoArtistico;
+import br.unb.cic.imdb.negocio.Autor;
+import br.unb.cic.imdb.negocio.Genero;
 import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 
 public class DAOTrabalhoArtisticoMemoria implements DAOTrabalhoArtistico {
@@ -37,6 +39,28 @@ public class DAOTrabalhoArtisticoMemoria implements DAOTrabalhoArtistico {
 	@Override
 	public void remover(TrabalhoArtistico trabalhoArtistico) {
 		trabalhosArtisticos.remove(trabalhoArtistico);
+	}
+
+	@Override
+	public List<TrabalhoArtistico> recuperaPorGenero(Genero genero) {
+		List<TrabalhoArtistico> res = new ArrayList<>();
+		for (TrabalhoArtistico trabalhoArtistico : trabalhosArtisticos) {
+			if (trabalhoArtistico.getGenero().equals(genero)) {
+				res.add(trabalhoArtistico);
+			}
+		}
+		return res.isEmpty() ? null : res;
+	}
+
+	@Override
+	public List<TrabalhoArtistico> recuperaPorAutor(Autor autor) {
+		List<TrabalhoArtistico> res = new ArrayList<>();
+		for (TrabalhoArtistico trabalhoArtistico : trabalhosArtisticos) {
+			if (trabalhoArtistico.getAutor().equals(autor)) {
+				res.add(trabalhoArtistico);
+			}
+		}
+		return res.isEmpty() ? null : res;
 	}
 
 }
