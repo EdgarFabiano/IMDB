@@ -11,6 +11,7 @@ import br.unb.cic.imdb.negocio.Main;
 import br.unb.cic.imdb.negocio.Usuario;
 
 import java.awt.event.ActionEvent;
+import java.security.InvalidParameterException;
 import java.awt.Font;
 
 import javax.swing.SwingConstants;
@@ -164,7 +165,9 @@ public class CadastroPanel extends panels {
 			setNome(newNameField.getText());
 			
 			if(password.equals(Confimapassword)){
-			Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
+				try {
+					
+					Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
 					lbl.setText("Foi");
 					LoginPanel l = new LoginPanel();
 					l.lbl.setText("Usuário cadastrado com Sucesso");
@@ -180,6 +183,15 @@ public class CadastroPanel extends panels {
 					else{
 						lbl.setText("Login Inválido");
 					}
+				}
+				catch (IllegalArgumentException exception) {
+					if (exception.getClass().equals(InvalidParameterException.class)) {
+						lbl.setText ("Preencha todos os campos");
+					}
+					else {
+						lbl.setText("Já existe um usuario com esse login");
+					}
+				}
 					
 			}
 			else{
