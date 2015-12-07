@@ -11,6 +11,7 @@ import br.unb.cic.imdb.integracao.DAOFaixaMusical;
 import br.unb.cic.imdb.integracao.DAOGenero;
 import br.unb.cic.imdb.integracao.DAOTrabalhoArtistico;
 import br.unb.cic.imdb.integracao.DAOUsuario;
+import br.unb.cic.imdb.integracao.jpa.JPAUtil;
 
 /**
  * Classe de fachada (Facade class) que vai servir de comunicacao 
@@ -64,112 +65,162 @@ public class IMDBFacade {
 
 	//Operacoes de Genero
 	public void adicionaGenero(Genero genero) {
+		JPAUtil.comecarOperacoes();
 		if(recuperarGeneroPorTitulo(genero.getTitulo()) == null) {
 			daoGenero.salvar(genero);
 		}
 		else { 
 			throw new IllegalArgumentException();
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 		
 	public List<Genero> recuperarGeneros() {
-		return daoGenero.recuperaTodos();
+		JPAUtil.comecarOperacoes();
+		List<Genero> generos = daoGenero.recuperaTodos();
+		JPAUtil.finalizarOperacoes();
+		return generos;
 	}
 
 	public Genero recuperarGeneroPorTitulo(String titulo) {
-		return daoGenero.recuperaPorTitulo(titulo);
+		JPAUtil.comecarOperacoes();
+		Genero genero = daoGenero.recuperaPorTitulo(titulo);
+		JPAUtil.finalizarOperacoes();
+		return genero;
 	}
 	
 	public void removerGenero(Genero genero) {
+		JPAUtil.comecarOperacoes();
 		if(recuperarGeneroPorTitulo(genero.getTitulo()) != null) {
 			daoGenero.remover(genero);
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	//Operacoes de Autor
 	public void adicionaAutor(Autor autor) {
+		JPAUtil.comecarOperacoes();
 		if(recuperarAutorPorNome(autor.getNome()) == null) {
 			daoAutor.salvar(autor);
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<Autor> recuperarAutores() {
-		return daoAutor.recuperaTodos();
+		JPAUtil.comecarOperacoes();
+		List<Autor> autores = daoAutor.recuperaTodos();
+		JPAUtil.finalizarOperacoes();
+		return autores;
 	}
 	
 	public Autor recuperarAutorPorNome(String nome) {
-		return daoAutor.recuperaPorNome(nome);
+		JPAUtil.comecarOperacoes();
+		Autor autor = daoAutor.recuperaPorNome(nome);
+		JPAUtil.finalizarOperacoes();
+		return autor;
 	}
 	
 	public void removerAutor(Autor autor) {
+		JPAUtil.comecarOperacoes();
 		if(recuperarAutorPorNome(autor.getNome()) != null) {
 			daoAutor.remover(autor);
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 
 	//Operacoes de Avaliacao
 	public void adicionaAvaliacao(Avaliacao avaliacao){
 		//O mesmo usuario pode avaliar o mesmo trabalho varias vezes(?)
+		JPAUtil.comecarOperacoes();
 		daoAvaliacao.salvar(avaliacao);
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<Avaliacao> recuperarAvaliacoes() {
-		return daoAvaliacao.recuperaTodos();
+		JPAUtil.comecarOperacoes();
+		List<Avaliacao> avaliacoes = daoAvaliacao.recuperaTodos();
+		JPAUtil.finalizarOperacoes();
+		return avaliacoes;
 	}
 	
 	public List<Avaliacao> recuperarAvaliacoesPorUsuario(Usuario usuario) {
-		return daoAvaliacao.recuperaPorUsuario(usuario);
+		JPAUtil.comecarOperacoes();
+		List<Avaliacao> avaliacoes = daoAvaliacao.recuperaPorUsuario(usuario);
+		JPAUtil.finalizarOperacoes();
+		return avaliacoes;
 	}
 	
 	public List<Avaliacao> recuperarAvaliacoesPorTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
-		return daoAvaliacao.recuperaPorTrabalhoArtistico(trabalhoArtistico);
+		JPAUtil.comecarOperacoes();
+		List<Avaliacao> avaliacoes = daoAvaliacao.recuperaPorTrabalhoArtistico(trabalhoArtistico);
+		JPAUtil.finalizarOperacoes();
+		return avaliacoes;
 	}
 	
 	public void removerAvaliacao(Avaliacao avaliacao) {
+		JPAUtil.comecarOperacoes();
 		if (recuperarAvaliacoesPorTrabalhoArtistico(avaliacao.getAvaliado()) != null ||
 				recuperarAvaliacoesPorUsuario(avaliacao.getAvaliador()) != null) {
 			daoAvaliacao.remover(avaliacao);
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	//Operacoes de TrabalhoArtistico
 	//Podem existir trabalhos com o mesmo nome, mas de autores diferentes?
 	public void adicionaTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
+		JPAUtil.comecarOperacoes();
 		if (recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) == null) {
 			daoTrabalhoArtistico.salvar(trabalhoArtistico);
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<TrabalhoArtistico> recuperarTrabalhosArtisticos() {
-		return daoTrabalhoArtistico.recuperaTodos();
+		JPAUtil.comecarOperacoes();
+		List<TrabalhoArtistico> trabalhos = daoTrabalhoArtistico.recuperaTodos();
+		JPAUtil.finalizarOperacoes();
+		return trabalhos;
 	}
 	
 	public TrabalhoArtistico recuperarTrabalhoArtisticoPorTitulo(String titulo) {
-		return daoTrabalhoArtistico.recuperaPorTitulo(titulo);
+		JPAUtil.comecarOperacoes();
+		TrabalhoArtistico trabalho = daoTrabalhoArtistico.recuperaPorTitulo(titulo);
+		JPAUtil.finalizarOperacoes();
+		return trabalho;
 	}
 	
 	public List<TrabalhoArtistico> recuperarTrabalhoArtisticoPorGenero(Genero genero) {
-		return daoTrabalhoArtistico.recuperaPorGenero(genero);
+		JPAUtil.comecarOperacoes();
+		List<TrabalhoArtistico> trabalhos = daoTrabalhoArtistico.recuperaPorGenero(genero);
+		JPAUtil.finalizarOperacoes();
+		return trabalhos;
 	}
 	
 	public List<TrabalhoArtistico> recuperarTrabalhoArtisticoPorAutor(Autor autor) {
-		return daoTrabalhoArtistico.recuperaPorAutor(autor);
+		JPAUtil.comecarOperacoes();
+		List<TrabalhoArtistico> trabalhos = daoTrabalhoArtistico.recuperaPorAutor(autor);
+		JPAUtil.finalizarOperacoes();
+		return trabalhos;
 	}
 	
 	public void removerTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
+		JPAUtil.comecarOperacoes();
 		if(recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) != null) {
 			daoTrabalhoArtistico.remover(trabalhoArtistico);
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	//Operacoes de Usuario
 	public void adicionaUsuario(Usuario usuario) {
+		JPAUtil.comecarOperacoes();
 		if (!usuario.getLogin().equals("") && !usuario.getNome().equals("") && !usuario.getSenha().equals("")) {
 			if (recuperarUsuarioPorLogin(usuario.getLogin()) == null){
 				daoUsuario.salvar(usuario);
@@ -181,51 +232,76 @@ public class IMDBFacade {
 		else {
 			throw new InvalidParameterException();
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<Usuario> recuperarUsuarios() {
-		return daoUsuario.recuperaTodos();
+		JPAUtil.comecarOperacoes();
+		List<Usuario> usuarios = daoUsuario.recuperaTodos();
+		JPAUtil.finalizarOperacoes();
+		return usuarios;
 	}
 	
 	public Usuario recuperarUsuarioPorLogin(String login) {
-		return daoUsuario.recuperaPorLogin(login);
+		JPAUtil.comecarOperacoes();
+		Usuario usuario = daoUsuario.recuperaPorLogin(login);
+		JPAUtil.finalizarOperacoes();
+		return usuario;
 	}
 	
 	public void removerUsuario(Usuario usuario) {
+		JPAUtil.comecarOperacoes();
 		Usuario foo = recuperarUsuarioPorLogin(usuario.getLogin());
 		if (foo != null) {
 			daoUsuario.remover(usuario);
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	public boolean autenticarUsuario (String login, String senha) {
+		JPAUtil.comecarOperacoes();
 		Usuario usuario = daoUsuario.recuperaPorLogin(login);
+		JPAUtil.finalizarOperacoes();
 		return senha.equals(usuario.getSenha());
+		
 	}
 	
 	//Operacoes de Faixa Musical
 	public void adicionarFaixaMusical(FaixaMusical faixaMusical) {
+		JPAUtil.comecarOperacoes();
 		if (recuperarFaixaMusicalPorTitulo(faixaMusical.getTitulo()) == null) {
 			daoFaixaMusical.salvar(faixaMusical);
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
+		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<FaixaMusical> recuperarFaixasMusicais() {
-		return daoFaixaMusical.recuperaTodos();
+		JPAUtil.comecarOperacoes();
+		List<FaixaMusical> faixas = daoFaixaMusical.recuperaTodos();
+		JPAUtil.finalizarOperacoes();
+		return faixas;
 	}
 	
 	public FaixaMusical recuperarFaixaMusicalPorTitulo(String titulo) {
-		return daoFaixaMusical.recuperaPorTitulo(titulo);
+		JPAUtil.comecarOperacoes();
+		FaixaMusical faixa = daoFaixaMusical.recuperaPorTitulo(titulo);
+		JPAUtil.finalizarOperacoes();
+		return faixa;
 	}
 	
 	public List<FaixaMusical> recuperarFaixaMusicalPorAutor(AlbumMusical albumMusical) {
-		return daoFaixaMusical.recuperaPorAlbum(albumMusical);
+		JPAUtil.comecarOperacoes();
+		List<FaixaMusical> faixas = daoFaixaMusical.recuperaPorAlbum(albumMusical);
+		JPAUtil.finalizarOperacoes();
+		return faixas;
 	}
 	
 	public void removerFaixaMusical(FaixaMusical faixaMusical) {
+		JPAUtil.comecarOperacoes();
 		daoFaixaMusical.remover(faixaMusical);
+		JPAUtil.finalizarOperacoes();
 	}
 }
