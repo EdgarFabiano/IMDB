@@ -158,13 +158,13 @@ public class AdicionarPanel extends panels{
 			else{
 				g = Main.facade.recuperarGeneroPorTitulo(gen.getText());
 			}
-			long id = Main.facade.recuperarTrabalhosArtisticos().size() + 10;
-			id++;
+			//long id = Main.facade.recuperarTrabalhosArtisticos().size() + 10;
+			//id++;
 			
 			
 			t = new TrabalhoArtistico(title.getText(), Integer.parseInt(year.getText()),g, a);
-			t.setId(id);
-			Main.facade.recuperarTrabalhosArtisticos().add(t);
+			Main.facade.adicionaTrabalhoArtistico(t);
+			//t.setId(id);
 			a.setProducaoArtistica(Main.facade.recuperarTrabalhoArtisticoPorAutor(a));
 			
 			this.setVisible(false);

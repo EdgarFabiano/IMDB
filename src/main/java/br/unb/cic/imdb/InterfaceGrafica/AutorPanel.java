@@ -164,6 +164,7 @@ public class AutorPanel extends panels{
 	        	selecionado2.setText("Descrição: "+aut.getDescricao());
 	        	selecionado3.setText("Trabalhos Artísticos");
 	        	aux.removeAll();
+	        	aut.setProducaoArtistica(Main.facade.recuperarTrabalhoArtisticoPorAutor(aut));
 	        	if(aut.getProducaoArtistica() != null){
 		        	for(int i = 0; i < aut.getProducaoArtistica().size(); i++){
 		        		aux.add(aut.getProducaoArtistica().get(i).getTitulo());

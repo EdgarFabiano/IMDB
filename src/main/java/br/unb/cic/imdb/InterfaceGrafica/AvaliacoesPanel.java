@@ -63,7 +63,7 @@ public class AvaliacoesPanel extends panels{
 		evaluate.setBounds(464, 518, 97, 25);
 		
 		add(evaluate);
-		
+		trab.setAvaliacoesRecebidas(Main.facade.recuperarAvaliacoesPorTrabalhoArtistico(trab));
 		if(trab.getAvaliacoesRecebidas() != null){
 			for(int i = 0; i < trab.getAvaliacoesRecebidas().size(); i++){
 				list.add(trab.getAvaliacoesRecebidas().get(i).getComentario()+" - "+

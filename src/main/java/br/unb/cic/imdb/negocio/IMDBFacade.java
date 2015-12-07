@@ -65,14 +65,14 @@ public class IMDBFacade {
 
 	//Operacoes de Genero
 	public void adicionaGenero(Genero genero) {
-		JPAUtil.comecarOperacoes();
 		if(recuperarGeneroPorTitulo(genero.getTitulo()) == null) {
+			JPAUtil.comecarOperacoes();
 			daoGenero.salvar(genero);
+			JPAUtil.finalizarOperacoes();
 		}
 		else { 
 			throw new IllegalArgumentException();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 		
 	public List<Genero> recuperarGeneros() {
@@ -90,23 +90,23 @@ public class IMDBFacade {
 	}
 	
 	public void removerGenero(Genero genero) {
-		JPAUtil.comecarOperacoes();
 		if(recuperarGeneroPorTitulo(genero.getTitulo()) != null) {
+			JPAUtil.comecarOperacoes();
 			daoGenero.remover(genero);
+			JPAUtil.finalizarOperacoes();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	//Operacoes de Autor
 	public void adicionaAutor(Autor autor) {
-		JPAUtil.comecarOperacoes();
 		if(recuperarAutorPorNome(autor.getNome()) == null) {
+			JPAUtil.comecarOperacoes();
 			daoAutor.salvar(autor);
+			JPAUtil.finalizarOperacoes();
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<Autor> recuperarAutores() {
@@ -124,11 +124,11 @@ public class IMDBFacade {
 	}
 	
 	public void removerAutor(Autor autor) {
-		JPAUtil.comecarOperacoes();
 		if(recuperarAutorPorNome(autor.getNome()) != null) {
+			JPAUtil.comecarOperacoes();
 			daoAutor.remover(autor);
+			JPAUtil.finalizarOperacoes();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 
 	//Operacoes de Avaliacao
@@ -161,25 +161,25 @@ public class IMDBFacade {
 	}
 	
 	public void removerAvaliacao(Avaliacao avaliacao) {
-		JPAUtil.comecarOperacoes();
 		if (recuperarAvaliacoesPorTrabalhoArtistico(avaliacao.getAvaliado()) != null ||
 				recuperarAvaliacoesPorUsuario(avaliacao.getAvaliador()) != null) {
+			JPAUtil.comecarOperacoes();
 			daoAvaliacao.remover(avaliacao);
+			JPAUtil.finalizarOperacoes();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	//Operacoes de TrabalhoArtistico
 	//Podem existir trabalhos com o mesmo nome, mas de autores diferentes?
 	public void adicionaTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
-		JPAUtil.comecarOperacoes();
 		if (recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) == null) {
+			JPAUtil.comecarOperacoes();
 			daoTrabalhoArtistico.salvar(trabalhoArtistico);
+			JPAUtil.finalizarOperacoes();
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<TrabalhoArtistico> recuperarTrabalhosArtisticos() {
@@ -211,19 +211,20 @@ public class IMDBFacade {
 	}
 	
 	public void removerTrabalhoArtistico(TrabalhoArtistico trabalhoArtistico) {
-		JPAUtil.comecarOperacoes();
 		if(recuperarTrabalhoArtisticoPorTitulo(trabalhoArtistico.getTitulo()) != null) {
+			JPAUtil.comecarOperacoes();
 			daoTrabalhoArtistico.remover(trabalhoArtistico);
+			JPAUtil.finalizarOperacoes();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	//Operacoes de Usuario
 	public void adicionaUsuario(Usuario usuario) {
-		JPAUtil.comecarOperacoes();
 		if (!usuario.getLogin().equals("") && !usuario.getNome().equals("") && !usuario.getSenha().equals("")) {
 			if (recuperarUsuarioPorLogin(usuario.getLogin()) == null){
+				JPAUtil.comecarOperacoes();
 				daoUsuario.salvar(usuario);
+				JPAUtil.finalizarOperacoes();
 			}
 			else {
 				throw new IllegalArgumentException();
@@ -232,7 +233,6 @@ public class IMDBFacade {
 		else {
 			throw new InvalidParameterException();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<Usuario> recuperarUsuarios() {
@@ -250,12 +250,12 @@ public class IMDBFacade {
 	}
 	
 	public void removerUsuario(Usuario usuario) {
-		JPAUtil.comecarOperacoes();
 		Usuario foo = recuperarUsuarioPorLogin(usuario.getLogin());
 		if (foo != null) {
+			JPAUtil.comecarOperacoes();
 			daoUsuario.remover(usuario);
+			JPAUtil.finalizarOperacoes();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	public boolean autenticarUsuario (String login, String senha) {
@@ -268,14 +268,14 @@ public class IMDBFacade {
 	
 	//Operacoes de Faixa Musical
 	public void adicionarFaixaMusical(FaixaMusical faixaMusical) {
-		JPAUtil.comecarOperacoes();
 		if (recuperarFaixaMusicalPorTitulo(faixaMusical.getTitulo()) == null) {
+			JPAUtil.comecarOperacoes();
 			daoFaixaMusical.salvar(faixaMusical);
+			JPAUtil.finalizarOperacoes();
 		}
 		else {
 			throw new IllegalArgumentException();
 		}
-		JPAUtil.finalizarOperacoes();
 	}
 	
 	public List<FaixaMusical> recuperarFaixasMusicais() {
