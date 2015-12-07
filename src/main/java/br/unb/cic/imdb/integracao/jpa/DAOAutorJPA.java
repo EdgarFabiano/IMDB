@@ -9,36 +9,31 @@ import br.unb.cic.imdb.negocio.Autor;
 
 public class DAOAutorJPA implements DAOAutor {
 	
-	private EntityManager em;
 
 	@Override
 	public void salvar(Autor autor) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(autor);
-		em.getTransaction().commit();
+		JPAUtil.em.getTransaction().begin();
+		JPAUtil.em.persist(autor);
+		JPAUtil.em.getTransaction().commit();
 	}
 
 	@Override
 	public List<Autor> recuperaTodos() {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		return em.createQuery("FROM Autor").getResultList();
+		List<Autor> autores = JPAUtil.em.createQuery("FROM Autor").getResultList();
+		return autores;
 	}
 
 	@Override
 	public Autor recuperaPorNome(String nome) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<Autor> autores = em.createQuery("FROM Autor WHERE nome = :nomeParam").setParameter("nomeParam", nome).getResultList();
+		List<Autor> autores = JPAUtil.em.createQuery("FROM Autor WHERE nome = :nomeParam").setParameter("nomeParam", nome).getResultList();
 		return autores.size() == 1 ? autores.get(0) : null;
 	}
 
 	@Override
 	public void remover(Autor autor) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		em.getTransaction().begin();
-		em.remove(autor);
-		em.getTransaction().commit();
-		
+		JPAUtil.em.getTransaction().begin();
+		JPAUtil.em.remove(autor);
+		JPAUtil.em.getTransaction().commit();
 	}
 
 }

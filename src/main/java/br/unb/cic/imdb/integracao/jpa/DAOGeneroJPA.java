@@ -15,36 +15,31 @@ import br.unb.cic.imdb.negocio.Genero;
  * @author rbonifacio
  */
 public class DAOGeneroJPA implements DAOGenero {
-
-	private EntityManager em; 
 	
 	@Override
 	public void salvar(Genero genero) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(genero);
-		em.getTransaction().commit();
+		JPAUtil.em.getTransaction().begin();
+		JPAUtil.em.persist(genero);
+		JPAUtil.em.getTransaction().commit();
 	}
 
 	@Override
 	public List<Genero> recuperaTodos() {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		return em.createQuery("FROM Genero").getResultList();
+		List<Genero> generos = JPAUtil.em.createQuery("FROM Genero").getResultList();
+		return generos;
 	}
 
 	@Override
 	public Genero recuperaPorTitulo(String titulo) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<Genero> generos = em.createQuery("FROM Genero WHERE titulo = :tituloParam").setParameter("tituloParam", titulo).getResultList();
+		List<Genero> generos = JPAUtil.em.createQuery("FROM Genero WHERE titulo = :tituloParam").setParameter("tituloParam", titulo).getResultList();
 		return generos.size() == 1 ? generos.get(0): null;
 	}
 
 	@Override
 	public void remover(Genero genero) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		em.getTransaction().begin();
-		em.remove(genero);
-		em.getTransaction().commit();
+		JPAUtil.em.getTransaction().begin();
+		JPAUtil.em.remove(genero);
+		JPAUtil.em.getTransaction().commit();
 	}
 	
 }

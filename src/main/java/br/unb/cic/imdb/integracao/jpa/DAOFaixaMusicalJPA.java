@@ -10,41 +10,36 @@ import br.unb.cic.imdb.negocio.FaixaMusical;
 
 public class DAOFaixaMusicalJPA implements DAOFaixaMusical {
 
-	private EntityManager em;
 	@Override
 	public void salvar(FaixaMusical faixaMusical) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		em.getTransaction().begin();
-		em.persist(faixaMusical);
-		em.getTransaction().commit();
+		JPAUtil.em.getTransaction().begin();
+		JPAUtil.em.persist(faixaMusical);
+		JPAUtil.em.getTransaction().commit();
 	}
 
 	@Override
 	public List<FaixaMusical> recuperaTodos() {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		return em.createQuery("FROM FaixaMusical").getResultList();
+		List<FaixaMusical> faixas = JPAUtil.em.createQuery("FROM FaixaMusical").getResultList();
+		return faixas;
 	}
 
 	@Override
 	public List<FaixaMusical> recuperaPorAlbum(AlbumMusical albumMusical) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<FaixaMusical> faixas = em.createQuery("FROM FaixaMusical WHERE id_trabalho_artistico = :albumIdParam").setParameter("albumIdParam", albumMusical.getId()).getResultList();
+		List<FaixaMusical> faixas = JPAUtil.em.createQuery("FROM FaixaMusical WHERE id_trabalho_artistico = :albumIdParam").setParameter("albumIdParam", albumMusical.getId()).getResultList();
 		return faixas.size() == 0 ? null : faixas;
 	}
 
 	@Override
 	public FaixaMusical recuperaPorTitulo(String titulo) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		List<FaixaMusical> faixas = em.createQuery("FROM FaixaMusical WHERE titulo = :tituloParam").setParameter("tituloParam", titulo).getResultList();
+		List<FaixaMusical> faixas = JPAUtil.em.createQuery("FROM FaixaMusical WHERE titulo = :tituloParam").setParameter("tituloParam", titulo).getResultList();
 		return faixas.size() == 1 ? faixas.get(0) : null;
 	}
 
 	@Override
 	public void remover(FaixaMusical faixaMusical) {
-		em = EMFactoryHelper.instance().getFactory().createEntityManager();
-		em.getTransaction().begin();
-		em.remove(faixaMusical);
-		em.getTransaction().commit();
+		JPAUtil.em.getTransaction().begin();
+		JPAUtil.em.remove(faixaMusical);
+		JPAUtil.em.getTransaction().commit();
 	}
 
 }
