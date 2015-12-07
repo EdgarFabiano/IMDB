@@ -50,11 +50,23 @@ Ela conta com:
 		
 Notas de Injeção de Dependências
 ----------------------------------
+O programa sustenta implementacoes em memoria e em JPA para os DAOs, para
+alternar entre elas basta comentar o bloco referente à implementacao desejada.
+
+Para utilizar a implementacao em memoria também é necessario retirar comentarios
+dos setters sinalizados na classe *Populador.java* no pacote *br.unb.cic.imdb.negocio*.
 
 
 Notas de Banco de dados
 ----------------------------------
-
+O banco de dados utilizado foi o PostgreSQL 9.4.5, para utilizá-lo é necessario seguir
+os seguintes passos;
+- Criar um novo usuario "postgres" e senha "postgres";
+  Alternativamente, pode-se mudar a o usuario e a senha no arquivo *persistence.xml*
+  caso o usuario ja possua o pgAdmin com usuario e senha diferente.
+- Para criar o database basta entrar no servidor do usuario, digitar sua senha;
+- Clicar com o botao direito em Databases->New Database...;
+- Nomear o database "imdb".
 
 Notas de cobertura de código
 ----------------------------------

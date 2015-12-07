@@ -13,9 +13,14 @@ public class Main {
 	
 	public static void main(String args[]) {
 		facade = ContextoID.instance().facade();
-		//RETIRAR COMENTARIOS PARA POPULAR BANCO DE DADOS OU USAR VERSAO EM MEMORIA
-//		Populador pop = new Populador();
-//		pop.popular(facade);
+		Populador pop = new Populador();
+
+		try {
+			pop.popular(facade);
+		}
+		catch (IllegalArgumentException e) {
+			System.out.println("BD já populado");
+		}
 		
 		Frame = new MainFrame(new LoginPanel()); 
 	}
