@@ -1,6 +1,7 @@
 package br.unb.cic.imdb.InterfaceGrafica;
 
 import java.awt.Color;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 
 import br.unb.cic.imdb.negocio.Main;
@@ -12,6 +13,7 @@ import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
 
 public class AvaliacoesPanel extends panels{
 
@@ -22,6 +24,8 @@ public class AvaliacoesPanel extends panels{
 	
 	private TrabalhoArtistico trab;
 	private ArrayList<JLabel> lbl = new ArrayList<JLabel>();
+	private JButton back;
+	private List list = new List();
 	
 	public AvaliacoesPanel(TrabalhoArtistico t) {
 		this.trab = t;
@@ -32,6 +36,13 @@ public class AvaliacoesPanel extends panels{
 		setLayout(null);
 		this.setSize(900,600);
 		setBackground(Color.DARK_GRAY);
+		list.setMultipleSelections(true);
+		list.setForeground(Color.WHITE);
+		list.setBackground(Color.DARK_GRAY);
+		list.setFont(new Font("Arial", Font.PLAIN, 18));
+		list.setBounds(102, 135, 696, 366);
+		add(list);
+		
 		
 		JLabel label = new JLabel("Avaliações de "+trab.getTitulo());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -40,37 +51,30 @@ public class AvaliacoesPanel extends panels{
 		label.setBounds(272, 47, 355, 51);
 		add(label);
 		
-		JLabel label_1 = new JLabel("Avalia\u00E7\u00F5es de <dynamic>");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		label_1.setBounds(83, 140, 734, 28);
-		add(label_1);
+				
+		back = new JButton("Voltar");
+		back.setBounds(401, 518, 97, 25);
+		back.addActionListener(this);
+		add(back);
 		
-		if(trab.getAvaliacoesRecebidas().isEmpty()){
+		if(trab.getAvaliacoesRecebidas() != null){
 			for(int i = 0; i < trab.getAvaliacoesRecebidas().size(); i++){
-				lbl.add(new JLabel("Comentário: "+trab.getAvaliacoesRecebidas().get(i).getComentario()+
-						"." +"- "+trab.getAvaliacoesRecebidas().get(i).getAvaliacao()+" stars -"+
-						" Por: "+trab.getAvaliacoesRecebidas().get(i).getAvaliador().getNome()));
-				lbl.get(i).setHorizontalAlignment(SwingConstants.CENTER);
-				lbl.get(i).setForeground(Color.WHITE);
-				lbl.get(i).setFont(new Font("Tahoma", Font.PLAIN, 18));
-				lbl.get(i).setBounds(83, 120+(35*i), 734, 28);
+				list.add(trab.getAvaliacoesRecebidas().get(i).getComentario()+" - "+
+						" Por: "+trab.getAvaliacoesRecebidas().get(i).getAvaliador().getNome()+
+						" - "+trab.getAvaliacoesRecebidas().get(i).getAvaliacao()+" stars ");
 			}
 		}
 		else{
-			lbl.add(new JLabel("Sem avaliações"));
-			lbl.get(0).setHorizontalAlignment(SwingConstants.CENTER);
-			lbl.get(0).setForeground(Color.WHITE);
-			lbl.get(0).setFont(new Font("Tahoma", Font.PLAIN, 18));
-			lbl.get(0).setBounds(83, 120+(35*0), 734, 28);
-			
+			list.add("Sem avaliações");			
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource() == back){
+			this.setVisible(false);
+			Main.Frame.setPanel(new TrabalhoPanel());
+		}
 		
 	}
 

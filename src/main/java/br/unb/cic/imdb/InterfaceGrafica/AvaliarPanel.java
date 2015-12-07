@@ -2,6 +2,7 @@ package br.unb.cic.imdb.InterfaceGrafica;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
 
 import java.awt.Font;
@@ -162,7 +163,10 @@ public class AvaliarPanel extends panels{
 			nota5.setSelected(true);
 		}
 		if(e.getSource() == evaluate){
-			trab.adicionaAvaliacaoRecebida(new Avaliacao(nota, comentario.getText(), Main.user, trab));
+			Avaliacao a = new Avaliacao(nota, comentario.getText(), Main.user, trab);
+			Main.facade.adicionaAvaliacao(a);
+			trab.setAvaliacoesRecebidas(Main.facade.recuperarAvaliacoesPorTrabalhoArtistico(trab));
+			
 			this.setVisible(false);
 			Main.Frame.setPanel(new TrabalhoPanel());
 		}

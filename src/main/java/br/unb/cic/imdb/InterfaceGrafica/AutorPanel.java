@@ -164,7 +164,7 @@ public class AutorPanel extends panels{
 	        	aux.removeAll();
 	        	if(aut.getProducaoArtistica() != null){
 		        	for(int i = 0; i < aut.getProducaoArtistica().size(); i++){
-		        		aux.add(aut.getProducaoArtistica().get(i).getTitulo()+" - "+aut.getProducaoArtistica().get(i).getAno() + " - "+aut.getProducaoArtistica().get(i).getGenero().getTitulo());
+		        		aux.add(aut.getProducaoArtistica().get(i).getTitulo());
 		        	}
 		        	aux.addItemListener(new ItemListener(){
 		    	        public void itemStateChanged(ItemEvent ie){
