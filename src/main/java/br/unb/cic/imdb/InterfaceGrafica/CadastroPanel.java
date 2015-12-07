@@ -165,17 +165,15 @@ public class CadastroPanel extends panels {
 			setNome(newNameField.getText());
 			
 			if(password.equals(Confimapassword)){
-//<<<<<<< HEAD
+
 				Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
-				Main.user.setLogin(loginField.getText());
-				Main.user.setNome(newNameField.getText());
-				Main.user.setSenha(senhaField.getText());
-			
-//=======
+				Usuario u = new Usuario(loginField.getText(), senhaField.getText(), newNameField.getText());
+				Main.user = u;				
+
 				try {
 					
 					Main.facade.adicionaUsuario(new Usuario(getLogin(), getPassword(), getNome()));
-//>>>>>>> origin/master
+
 					lbl.setText("Foi");
 					LoginPanel l = new LoginPanel();
 					l.lbl.setText("Usuário cadastrado com Sucesso");
@@ -183,10 +181,10 @@ public class CadastroPanel extends panels {
 					l.senhaField.setVisible(false);
 					l.lblLogin.setVisible(false);
 					l.lblSenha.setVisible(false);
-					Main.Frame.setPanel(l);
+//					Main.Frame.setPanel(l);
 					if(Main.facade.autenticarUsuario(getLogin(), getPassword())){
 						lbl.setText("Foi");
-						Main.Frame.setPanel(new AutorPanel());
+						Main.Frame.setPanel(l);
 					}
 					else{
 						lbl.setText("Login Inválido");

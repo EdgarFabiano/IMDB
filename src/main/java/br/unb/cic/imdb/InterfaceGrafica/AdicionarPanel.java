@@ -144,6 +144,7 @@ public class AdicionarPanel extends panels{
 			if(Main.facade.recuperarAutorPorNome(aut.getText()) == null){
 				a = new Autor(aut.getText(), des_aut.getText());
 				Main.facade.adicionaAutor(a);
+				//Main.facade.recuperarAutores().add(a);
 			}
 			else{
 				a = Main.facade.recuperarAutorPorNome(aut.getText());
@@ -152,12 +153,17 @@ public class AdicionarPanel extends panels{
 			if(Main.facade.recuperarGeneroPorTitulo(gen.getText()) == null){
 				g = new Genero(gen.getText(), des_gen.getText());
 				Main.facade.adicionaGenero(g);
+				//Main.facade.recuperarGeneros().add(g);
 			}
 			else{
 				g = Main.facade.recuperarGeneroPorTitulo(gen.getText());
 			}
+			long id = Main.facade.recuperarTrabalhosArtisticos().size() + 10;
+			id++;
+			
 			
 			t = new TrabalhoArtistico(title.getText(), Integer.parseInt(year.getText()),g, a);
+			t.setId(id);
 			Main.facade.recuperarTrabalhosArtisticos().add(t);
 			a.setProducaoArtistica(Main.facade.recuperarTrabalhoArtisticoPorAutor(a));
 			
