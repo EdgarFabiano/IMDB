@@ -9,6 +9,7 @@ import br.unb.cic.imdb.negocio.Avaliacao;
 import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 import br.unb.cic.imdb.negocio.Usuario;
 
+@SuppressWarnings({ "unchecked", "unused" })
 public class DAOAvaliacaoJPA implements DAOAvaliacao {
 
 	@Override

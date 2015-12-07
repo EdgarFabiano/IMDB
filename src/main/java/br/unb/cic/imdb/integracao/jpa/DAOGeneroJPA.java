@@ -14,6 +14,7 @@ import br.unb.cic.imdb.negocio.Genero;
  * 
  * @author rbonifacio
  */
+@SuppressWarnings({ "unchecked", "unused" })
 public class DAOGeneroJPA implements DAOGenero {
 	
 	@Override

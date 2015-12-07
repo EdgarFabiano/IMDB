@@ -9,8 +9,6 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 
 import br.unb.cic.imdb.negocio.Main;
-import br.unb.cic.imdb.negocio.IMDBFacade;
-import br.unb.cic.imdb.negocio.Usuario;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -25,6 +23,7 @@ import org.hibernate.cfg.naming.ImprovedNamingStrategyDelegator;
  * @author Edgar Fabiano
  *
  */
+@SuppressWarnings("unused")
 public class LoginPanel extends panels implements ActionListener{
 	
 	/**
@@ -70,7 +69,7 @@ public class LoginPanel extends panels implements ActionListener{
 		setBackground(Color.DARK_GRAY);
 		
 		userField = new JTextField();
-		userField.setToolTipText("Digite seu usu\u00E1rio aqui");
+		userField.setToolTipText("Digite seu Login aqui");
 		userField.setBounds(342, 234, 215, 22);
 		add(userField);
 		userField.setColumns(10);
@@ -111,11 +110,12 @@ public class LoginPanel extends panels implements ActionListener{
 		add(lbl);
 		
 		cadastroButton = new JButton("Cadastrar!");
+		cadastroButton.setToolTipText("Não possui um cadastro ainda?");
 		cadastroButton.addActionListener(this);
 		cadastroButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		cadastroButton.setBounds(384, 444, 132, 25);
+		cadastroButton.setBounds(384, 444, 132, 30);
 		this.add(cadastroButton);
-		cadastroButton.setVisible(false);
+		cadastroButton.setVisible(true);
 		
 		
 	}
@@ -134,7 +134,6 @@ public class LoginPanel extends panels implements ActionListener{
 				}
 				else{
 					lbl.setText("Login Inválido");
-					cadastroButton.setVisible(true);
 				}
 			}
 			catch (NullPointerException exception) {

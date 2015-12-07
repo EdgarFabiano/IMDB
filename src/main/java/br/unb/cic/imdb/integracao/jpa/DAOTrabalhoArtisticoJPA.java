@@ -9,6 +9,7 @@ import br.unb.cic.imdb.negocio.Autor;
 import br.unb.cic.imdb.negocio.Genero;
 import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 
+@SuppressWarnings({ "unchecked", "unused" })
 public class DAOTrabalhoArtisticoJPA implements DAOTrabalhoArtistico {
 
 	@Override

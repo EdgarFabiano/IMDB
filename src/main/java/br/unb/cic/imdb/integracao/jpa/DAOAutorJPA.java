@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import br.unb.cic.imdb.integracao.DAOAutor;
 import br.unb.cic.imdb.negocio.Autor;
 
+@SuppressWarnings({ "unchecked", "unused" })
 public class DAOAutorJPA implements DAOAutor {
 	
 

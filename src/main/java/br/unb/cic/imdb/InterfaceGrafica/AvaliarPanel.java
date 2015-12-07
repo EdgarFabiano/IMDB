@@ -17,6 +17,7 @@ import javax.swing.JButton;
 
 import org.hibernate.engine.jdbc.connections.internal.UserSuppliedConnectionProviderImpl;
 
+@SuppressWarnings("unused")
 public class AvaliarPanel extends panels{
 	
 	/**

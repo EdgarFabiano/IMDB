@@ -8,6 +8,7 @@ import br.unb.cic.imdb.integracao.DAOFaixaMusical;
 import br.unb.cic.imdb.negocio.AlbumMusical;
 import br.unb.cic.imdb.negocio.FaixaMusical;
 
+@SuppressWarnings({ "unchecked", "unused" })
 public class DAOFaixaMusicalJPA implements DAOFaixaMusical {
 
 	@Override

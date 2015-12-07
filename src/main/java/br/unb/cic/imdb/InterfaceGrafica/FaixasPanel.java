@@ -12,8 +12,6 @@ import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 import javax.swing.JLabel;
 
 import java.awt.Font;
-import java.util.ArrayList;
-import java.util.LinkedList;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -26,7 +24,6 @@ public class FaixasPanel extends panels{
 	private static final long serialVersionUID = 1L;
 	
 	private TrabalhoArtistico trab;
-	private ArrayList<JLabel> lbl = new ArrayList<JLabel>();
 	private JButton back;
 	private List list = new List();
 	private JButton evaluate = new JButton("Avaliar");

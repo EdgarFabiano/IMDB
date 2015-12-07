@@ -9,13 +9,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 import br.unb.cic.imdb.negocio.AlbumMusical;
 import br.unb.cic.imdb.negocio.Autor;
-import br.unb.cic.imdb.negocio.Genero;
 import br.unb.cic.imdb.negocio.Main;
 import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 

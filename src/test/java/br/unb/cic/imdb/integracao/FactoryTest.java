@@ -9,6 +9,7 @@ public class FactoryTest extends TestCase{
 
 	public void testFactory() {
 		try {
+			@SuppressWarnings("unused")
 			EntityManagerFactory factory = EMFactoryHelper.instance().getFactory();
 			assertTrue(true);
 		}

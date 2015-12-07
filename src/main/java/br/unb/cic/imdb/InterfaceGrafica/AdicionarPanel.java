@@ -1,7 +1,6 @@
 package br.unb.cic.imdb.InterfaceGrafica;
 
 import java.awt.Color;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 
 import br.unb.cic.imdb.negocio.Autor;

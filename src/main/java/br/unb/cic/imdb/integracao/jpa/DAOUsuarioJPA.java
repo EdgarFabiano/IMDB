@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import br.unb.cic.imdb.integracao.DAOUsuario;
 import br.unb.cic.imdb.negocio.Usuario;
 
+@SuppressWarnings({ "unchecked", "unused" })
 public class DAOUsuarioJPA implements DAOUsuario {
 
 	@Override

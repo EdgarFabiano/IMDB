@@ -114,7 +114,7 @@ public class CadastroPanel extends panels {
 		lblSenha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblSenha.setForeground(Color.WHITE);
 		lblSenha.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblSenha.setBounds(260, 284, 56, 16);
+		lblSenha.setBounds(274, 284, 56, 16);
 		add(lblSenha);
 		
 		lbl = new JLabel("Cadastro");

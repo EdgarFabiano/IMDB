@@ -20,6 +20,7 @@ import br.unb.cic.imdb.integracao.jpa.JPAUtil;
  *  
  * @author rbonifacio
  */
+@SuppressWarnings({ "unused" })
 public class IMDBFacade {
 	
 	private DAOGenero daoGenero;

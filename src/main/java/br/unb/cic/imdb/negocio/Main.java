@@ -5,6 +5,7 @@ import org.hibernate.engine.jdbc.connections.internal.UserSuppliedConnectionProv
 import br.unb.cic.imdb.InterfaceGrafica.*;
 import br.unb.cic.imdb.util.ContextoID;
 
+@SuppressWarnings({ "unused" })
 public class Main {
 	public static MainFrame Frame;
 	public static IMDBFacade facade;

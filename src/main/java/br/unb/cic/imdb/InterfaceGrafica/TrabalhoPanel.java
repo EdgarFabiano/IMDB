@@ -9,10 +9,6 @@ import java.awt.Label;
 import java.awt.Font;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
 import br.unb.cic.imdb.negocio.*;
 
@@ -25,6 +21,7 @@ import org.springframework.beans.factory.support.AutowireCandidateResolver;
  * @author EdgarFabiano
  *
  */
+@SuppressWarnings("unused")
 public class TrabalhoPanel extends panels{
 	/**
 	 * 
