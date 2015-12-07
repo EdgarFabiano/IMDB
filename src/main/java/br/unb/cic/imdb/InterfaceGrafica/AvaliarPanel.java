@@ -32,6 +32,7 @@ public class AvaliarPanel extends panels{
 	private JLabel lblComentrios;
 	private JTextField comentario;
 	private JButton evaluate;
+	private JButton cancel;
 	private int nota = 1;
 
 	public AvaliarPanel(TrabalhoArtistico t) {
@@ -105,9 +106,16 @@ public class AvaliarPanel extends panels{
 		comentario.setColumns(10);
 		
 		evaluate = new JButton("Avaliar");
-		evaluate.setBounds(401, 511, 97, 25);
+		evaluate.setBackground(Color.GREEN);
+		evaluate.setBounds(472, 511, 97, 25);
 		evaluate.addActionListener(this);
 		add(evaluate);
+		
+		cancel = new JButton("Cancelar");
+		cancel.setBackground(Color.RED);
+		cancel.setBounds(336, 511, 97, 25);
+		cancel.addActionListener(this);
+		add(cancel);
 		
 	}
 	
@@ -154,9 +162,13 @@ public class AvaliarPanel extends panels{
 			nota5.setSelected(true);
 		}
 		if(e.getSource() == evaluate){
-			Avaliacao a = new Avaliacao(nota, comentario.getText(), Main.user, trab);
+			new Avaliacao(nota, comentario.getText(), Main.user, trab);
 			this.setVisible(false);
-			Main.Frame.setPanel(new MainPanel());
+			Main.Frame.setPanel(new TrabalhoPanel());
+		}
+		if(e.getSource() == cancel){
+			this.setVisible(false);
+			Main.Frame.setPanel(new TrabalhoPanel());
 		}
 	}
 }

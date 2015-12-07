@@ -131,7 +131,7 @@ public class LoginPanel extends panels implements ActionListener{
 					Main.user.setNome(getName());
 					Main.user.setSenha(getPassword());
 					lbl.setText("Foi");
-					Main.Frame.setPanel(new MainPanel());
+					Main.Frame.setPanel(new AutorPanel());
 				}
 				else{
 					lbl.setText("Login Inválido");
