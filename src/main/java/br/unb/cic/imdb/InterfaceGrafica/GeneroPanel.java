@@ -126,6 +126,14 @@ public class GeneroPanel extends panels{
 		adicionar.addActionListener(this);
 		add(adicionar);
 		
+		Label logado = new Label("Selecione um Filtro");
+		logado.setAlignment(Label.RIGHT);
+		logado.setForeground(Color.WHITE);
+		logado.setFont(new Font("Dialog", Font.PLAIN, 18));
+		logado.setBounds(722, 10, 449, 43);
+		logado.setText("Olá, "+Main.user.getNome());
+		add(logado);
+		
 
 	}
 	
@@ -136,8 +144,8 @@ public class GeneroPanel extends panels{
 		list.addItemListener(new ItemListener(){
 	        public void itemStateChanged(ItemEvent ie){
 	        	Genero gen = Main.facade.recuperarGeneros().get(list.getSelectedIndex());
-	        	selecionado1.setText(gen.getTitulo());
-	        	selecionado2.setText(gen.getDescricao());
+	        	selecionado1.setText("Gênero: "+gen.getTitulo());
+	        	selecionado2.setText("Descrição: "+gen.getDescricao());
 	        }
 	    });
 	}

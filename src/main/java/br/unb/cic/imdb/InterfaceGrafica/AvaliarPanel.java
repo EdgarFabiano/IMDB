@@ -162,7 +162,7 @@ public class AvaliarPanel extends panels{
 			nota5.setSelected(true);
 		}
 		if(e.getSource() == evaluate){
-			new Avaliacao(nota, comentario.getText(), Main.user, trab);
+			trab.adicionaAvaliacaoRecebida(new Avaliacao(nota, comentario.getText(), Main.user, trab));
 			this.setVisible(false);
 			Main.Frame.setPanel(new TrabalhoPanel());
 		}

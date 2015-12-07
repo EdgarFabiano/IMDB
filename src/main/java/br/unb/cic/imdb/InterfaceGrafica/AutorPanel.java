@@ -138,6 +138,14 @@ public class AutorPanel extends panels{
 		adicionar.addActionListener(this);
 		add(adicionar);
 		
+		Label logado = new Label("Selecione um Filtro");
+		logado.setAlignment(Label.RIGHT);
+		logado.setForeground(Color.WHITE);
+		logado.setFont(new Font("Dialog", Font.PLAIN, 18));
+		logado.setBounds(722, 10, 449, 43);
+		logado.setText("Olá, "+Main.user.getNome());
+		add(logado);
+		
 
 	}
 		
@@ -167,7 +175,6 @@ public class AutorPanel extends panels{
 			    });
 		        }
 	        	else{
-	        		System.out.println("não foi");
 		        	aux.add("Nenhuma produção artística");
 		        }
 	        }

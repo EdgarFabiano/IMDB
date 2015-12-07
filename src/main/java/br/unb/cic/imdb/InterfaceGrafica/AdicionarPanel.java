@@ -1,6 +1,7 @@
 package br.unb.cic.imdb.InterfaceGrafica;
 
 import java.awt.Color;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 
 import br.unb.cic.imdb.negocio.Autor;
@@ -137,9 +138,28 @@ public class AdicionarPanel extends panels{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == adicionar){
-			new TrabalhoArtistico(title.getText(), Integer.parseInt(year.getText()),
-					new Genero(gen.getText(), des_gen.getText()), 
-					new Autor(aut.getText(), des_aut.getText()));
+			Autor a;
+			Genero g;
+			TrabalhoArtistico t;
+			if(Main.facade.recuperarAutorPorNome(aut.getText()) == null){
+				a = new Autor(aut.getText(), des_aut.getText());
+				Main.facade.adicionaAutor(a);
+			}
+			else{
+				a = Main.facade.recuperarAutorPorNome(aut.getText());
+			}
+			
+			if(Main.facade.recuperarGeneroPorTitulo(gen.getText()) == null){
+				g = new Genero(gen.getText(), des_gen.getText());
+				Main.facade.adicionaGenero(g);
+			}
+			else{
+				g = Main.facade.recuperarGeneroPorTitulo(gen.getText());
+			}
+			
+			t = new TrabalhoArtistico(title.getText(), Integer.parseInt(year.getText()),g, a);
+			Main.facade.recuperarTrabalhosArtisticos().add(t);
+			a.setProducaoArtistica(Main.facade.recuperarTrabalhoArtisticoPorAutor(a));
 			
 			this.setVisible(false);
 			Main.Frame.setPanel(new TrabalhoPanel());

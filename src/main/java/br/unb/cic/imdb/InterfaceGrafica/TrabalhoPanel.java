@@ -139,6 +139,14 @@ public class TrabalhoPanel extends panels{
 		adicionar.addActionListener(this);
 		add(adicionar);
 		
+		Label logado = new Label("Selecione um Filtro");
+		logado.setAlignment(Label.RIGHT);
+		logado.setForeground(Color.WHITE);
+		logado.setFont(new Font("Dialog", Font.PLAIN, 18));
+		logado.setBounds(722, 10, 449, 43);
+		logado.setText("Olá, "+Main.user.getNome());
+		add(logado);
+		
 
 	}
 		
@@ -152,9 +160,9 @@ public class TrabalhoPanel extends panels{
 	        	trab = Main.facade.recuperarTrabalhoArtisticoPorTitulo(list.getSelectedItem());
 	        	avaliar.setVisible(true);
 	        	avaliacoes.setVisible(true);
-	        	selecionado1.setText(Integer.toString(trab.getAno()));
-	        	selecionado2.setText(trab.getAutor().getNome());
-	        	selecionado3.setText(trab.getGenero().getTitulo());
+	        	selecionado1.setText("Ano: "+Integer.toString(trab.getAno()));
+	        	selecionado2.setText("Autor: "+trab.getAutor().getNome());
+	        	selecionado3.setText("Gênero: "+trab.getGenero().getTitulo());
 	        }
 	    });
 	}
@@ -179,10 +187,6 @@ public class TrabalhoPanel extends panels{
 			titulo.setSelected(true);
 			genero.setSelected(false);
 			list.removeAll();
-			selecionado1.setText("");
-			selecionado2.setText("");
-			selecionado3.setText("");
-			selecionado1.setText("");
 			PreencheTrabalho();
 			
 		}
