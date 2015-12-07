@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import br.unb.cic.imdb.negocio.AlbumMusical;
 import br.unb.cic.imdb.negocio.Autor;
 import br.unb.cic.imdb.negocio.Genero;
 import br.unb.cic.imdb.negocio.Main;
@@ -31,7 +32,6 @@ public class AutorPanel extends panels{
 	private Label selecionado2;
 	private Label selecionado3;
 	private JButton logout;
-	private JButton close;
 	private JButton avaliar;
 	private JRadioButton autor;
 	private JRadioButton titulo;
@@ -40,6 +40,7 @@ public class AutorPanel extends panels{
 	private Label label;
 	private JButton avaliacoes;
 	private JButton adicionar;
+	private JButton faixas;
 	
 	public AutorPanel() {
 		setup();
@@ -68,15 +69,10 @@ public class AutorPanel extends panels{
 		add(list);
 		
 		logout = new JButton("Logout");
-		logout.setBounds(952, 673, 97, 25);
+		logout.setBounds(1074, 673, 97, 25);
 		logout.addActionListener(this);
 		logout.setVisible(true);
 		add(logout);
-		
-		close = new JButton("Fechar");
-		close.setBounds(1074, 673, 97, 25);
-		close.addActionListener(this);
-		add(close);
 		
 		autor = new JRadioButton("Autor");
 		autor.setForeground(Color.WHITE);
@@ -116,7 +112,7 @@ public class AutorPanel extends panels{
 		add(selecionado3);
 		
 		avaliar = new JButton("Avaliar");
-		avaliar.setBounds(711, 673, 97, 25);
+		avaliar.setBounds(833, 673, 97, 25);
 		avaliar.addActionListener(this);
 		avaliar.setVisible(false);
 		add(avaliar);
@@ -128,13 +124,13 @@ public class AutorPanel extends panels{
 		add(label);
 		
 		avaliacoes = new JButton("Avaliações");
-		avaliacoes.setBounds(578, 673, 97, 25);
+		avaliacoes.setBounds(722, 673, 97, 25);
 		avaliacoes.setVisible(false);
 		avaliacoes.addActionListener(this);
 		add(avaliacoes);
 		
 		adicionar = new JButton("Adicionar");
-		adicionar.setBounds(834, 673, 97, 25);
+		adicionar.setBounds(956, 673, 97, 25);
 		adicionar.addActionListener(this);
 		add(adicionar);
 		
@@ -145,6 +141,12 @@ public class AutorPanel extends panels{
 		logado.setBounds(722, 10, 449, 43);
 		logado.setText("Olá, "+Main.user.getNome());
 		add(logado);
+		
+		faixas = new JButton("Faixas Musicais");
+		faixas.setBounds(560, 673, 135, 25);
+		faixas.addActionListener(this);
+		faixas.setVisible(false);
+		add(faixas);
 		
 
 	}
@@ -165,12 +167,15 @@ public class AutorPanel extends panels{
 	        	if(aut.getProducaoArtistica() != null){
 		        	for(int i = 0; i < aut.getProducaoArtistica().size(); i++){
 		        		aux.add(aut.getProducaoArtistica().get(i).getTitulo());
+		        		faixas.setVisible(false);
 		        	}
 		        	aux.addItemListener(new ItemListener(){
 		    	        public void itemStateChanged(ItemEvent ie){
 		    	        	avaliacoes.setVisible(true);
 		    				avaliar.setVisible(true);
 		    				trab = Main.facade.recuperarTrabalhoArtisticoPorTitulo(aux.getSelectedItem());
+		    				if(trab instanceof AlbumMusical) faixas.setVisible(true);
+		    				else faixas.setVisible(false);
 			        }
 			    });
 		        }
@@ -186,9 +191,6 @@ public class AutorPanel extends panels{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == close){
-			System.exit(0);
-		}
 		if(e.getSource() == logout){
 			Main.Frame.setPanel(new LoginPanel());
 		}
@@ -233,6 +235,11 @@ public class AutorPanel extends panels{
 		if(e.getSource() == adicionar){
 			this.setVisible(false);
 			Main.Frame.setPanel(new AdicionarPanel());
+		}
+		
+		if(e.getSource() == faixas){
+			this.setVisible(false);
+			Main.Frame.setPanel(new FaixasPanel(trab));
 		}
 		
 	}

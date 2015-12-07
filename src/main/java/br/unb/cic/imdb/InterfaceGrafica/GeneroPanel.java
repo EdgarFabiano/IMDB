@@ -36,7 +36,6 @@ public class GeneroPanel extends panels{
 	private Label selecionado2;
 	private Label selecionado3;
 	private JButton logout;
-	private JButton close;
 	private JRadioButton autor;
 	private JRadioButton titulo;
 	private JRadioButton genero;
@@ -66,15 +65,10 @@ public class GeneroPanel extends panels{
 		add(list);
 		
 		logout = new JButton("Logout");
-		logout.setBounds(952, 673, 97, 25);
+		logout.setBounds(1074, 673, 97, 25);
 		logout.addActionListener(this);
 		logout.setVisible(true);
 		add(logout);
-		
-		close = new JButton("Fechar");
-		close.setBounds(1074, 673, 97, 25);
-		close.addActionListener(this);
-		add(close);
 		
 		autor = new JRadioButton("Autor");
 		autor.setForeground(Color.WHITE);
@@ -122,7 +116,7 @@ public class GeneroPanel extends panels{
 		add(label);
 		
 		adicionar = new JButton("Adicionar");
-		adicionar.setBounds(834, 673, 97, 25);
+		adicionar.setBounds(956, 673, 97, 25);
 		adicionar.addActionListener(this);
 		add(adicionar);
 		
@@ -152,9 +146,6 @@ public class GeneroPanel extends panels{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == close){
-			System.exit(0);
-		}
 		if(e.getSource() == logout){
 			Main.Frame.setPanel(new LoginPanel());
 		}

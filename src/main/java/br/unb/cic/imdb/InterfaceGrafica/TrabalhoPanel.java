@@ -36,7 +36,6 @@ public class TrabalhoPanel extends panels{
 	private Label selecionado2;
 	private Label selecionado3;
 	private JButton logout;
-	private JButton close;
 	private JButton avaliar;
 	private JRadioButton autor;
 	private JRadioButton titulo;
@@ -45,6 +44,7 @@ public class TrabalhoPanel extends panels{
 	private Label label;
 	private JButton avaliacoes;
 	private JButton adicionar;
+	private JButton faixas;
 	
 	public TrabalhoPanel() {
 		setup();
@@ -67,15 +67,10 @@ public class TrabalhoPanel extends panels{
 		add(list);
 		
 		logout = new JButton("Logout");
-		logout.setBounds(952, 673, 97, 25);
+		logout.setBounds(1074, 673, 97, 25);
 		logout.addActionListener(this);
 		logout.setVisible(true);
 		add(logout);
-		
-		close = new JButton("Fechar");
-		close.setBounds(1074, 673, 97, 25);
-		close.addActionListener(this);
-		add(close);
 		
 		autor = new JRadioButton("Autor");
 		autor.setForeground(Color.WHITE);
@@ -117,7 +112,7 @@ public class TrabalhoPanel extends panels{
 		add(selecionado3);
 		
 		avaliar = new JButton("Avaliar");
-		avaliar.setBounds(711, 673, 97, 25);
+		avaliar.setBounds(833, 673, 97, 25);
 		avaliar.addActionListener(this);
 		avaliar.setVisible(false);
 		add(avaliar);
@@ -129,13 +124,13 @@ public class TrabalhoPanel extends panels{
 		add(label);
 		
 		avaliacoes = new JButton("Avaliações");
-		avaliacoes.setBounds(578, 673, 97, 25);
+		avaliacoes.setBounds(722, 673, 97, 25);
 		avaliacoes.setVisible(false);
 		avaliacoes.addActionListener(this);
 		add(avaliacoes);
 		
 		adicionar = new JButton("Adicionar");
-		adicionar.setBounds(834, 673, 97, 25);
+		adicionar.setBounds(956, 673, 97, 25);
 		adicionar.addActionListener(this);
 		add(adicionar);
 		
@@ -146,6 +141,12 @@ public class TrabalhoPanel extends panels{
 		logado.setBounds(722, 10, 449, 43);
 		logado.setText("Olá, "+Main.user.getNome());
 		add(logado);
+		
+		faixas = new JButton("Faixas Musicais");
+		faixas.setBounds(560, 673, 135, 25);
+		faixas.addActionListener(this);
+		faixas.setVisible(false);
+		add(faixas);
 		
 
 	}
@@ -163,15 +164,14 @@ public class TrabalhoPanel extends panels{
 	        	selecionado1.setText("Ano: "+Integer.toString(trab.getAno()));
 	        	selecionado2.setText("Autor: "+trab.getAutor().getNome());
 	        	selecionado3.setText("Gênero: "+trab.getGenero().getTitulo());
+	        	if(trab instanceof AlbumMusical) faixas.setVisible(true);
+	        	else faixas.setVisible(false);
 	        }
 	    });
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == close){
-			System.exit(0);
-		}
 		if(e.getSource() == logout){
 			Main.Frame.setPanel(new LoginPanel());
 		}
@@ -211,6 +211,11 @@ public class TrabalhoPanel extends panels{
 		if(e.getSource() == adicionar){
 			this.setVisible(false);
 			Main.Frame.setPanel(new AdicionarPanel());
+		}
+		
+		if(e.getSource() == faixas){
+			this.setVisible(false);
+			Main.Frame.setPanel(new FaixasPanel(trab));
 		}
 		
 	}

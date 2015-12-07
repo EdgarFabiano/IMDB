@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 
+import br.unb.cic.imdb.negocio.AlbumMusical;
+import br.unb.cic.imdb.negocio.FaixaMusical;
 import br.unb.cic.imdb.negocio.Main;
 import br.unb.cic.imdb.negocio.TrabalhoArtistico;
 
@@ -11,11 +13,12 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class AvaliacoesPanel extends panels{
+public class FaixasPanel extends panels{
 
 	/**
 	 * 
@@ -28,7 +31,7 @@ public class AvaliacoesPanel extends panels{
 	private List list = new List();
 	private JButton evaluate = new JButton("Avaliar");
 	
-	public AvaliacoesPanel(TrabalhoArtistico t) {
+	public FaixasPanel(TrabalhoArtistico t) {
 		this.trab = t;
 		setup();
 	}
@@ -44,7 +47,7 @@ public class AvaliacoesPanel extends panels{
 		add(list);
 		
 		
-		JLabel label = new JLabel("Avaliações de "+trab.getTitulo());
+		JLabel label = new JLabel("Faixas musicais de "+trab.getTitulo());
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -63,16 +66,15 @@ public class AvaliacoesPanel extends panels{
 		evaluate.setBounds(464, 518, 97, 25);
 		
 		add(evaluate);
-		
-		if(trab.getAvaliacoesRecebidas() != null){
-			for(int i = 0; i < trab.getAvaliacoesRecebidas().size(); i++){
-				list.add(trab.getAvaliacoesRecebidas().get(i).getComentario()+" - "+
-						" Por: "+trab.getAvaliacoesRecebidas().get(i).getAvaliador().getNome()+
-						" - "+trab.getAvaliacoesRecebidas().get(i).getAvaliacao()+" stars ");
+		java.util.List<FaixaMusical> l = Main.facade.recuperarFaixaMusicalPorAutor((AlbumMusical) trab);
+		if(l != null){
+			for(int i = 0; i < l.size(); i++){
+				list.add(l.get(i).getTitulo()+" - "+
+						l.get(i).getDuracao() +" minutos");
 			}
 		}
 		else{
-			list.add("Sem avaliações");			
+			list.add("Sem Faixas");			
 		}
 	}
 
